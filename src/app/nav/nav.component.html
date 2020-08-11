@@ -1,20 +1,34 @@
 <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-  <a class="navbar-brand" href="#">Dating App</a>
+  <a class="navbar-brand">Dating App</a>
 
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="#">Matches </a>
+        <a class="nav-link">Matches </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Lists</a>
+        <a class="nav-link">Lists</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#" tabindex="-1" aria-disabled="true">Messages</a>
+        <a class="nav-link" tabindex="-1" aria-disabled="true">Messages</a>
       </li>
     </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="text" placeholder="Username">
-      <input class="form-control mr-sm-2" type="text" placeholder="Password">
-      <button class="btn btn-success my-2 my-sm-0" type="submit">Login</button>
+    <form #loginForm="ngForm" (ngSubmit)="onLogin(loginForm)" class="form-inline my-2 my-lg-0">
+      <input 
+        class="form-control mr-sm-2" 
+        type="text" 
+        placeholder="Username" 
+        ngModel
+        name="username"
+        required
+      >
+      <input 
+        class="form-control mr-sm-2" 
+        type="password" 
+        placeholder="Password" 
+        ngModel
+        name="password"
+        required
+      >
+      <button [disabled]="!loginForm.valid" class="btn btn-success my-2 my-sm-0" type="submit">Login</button>
     </form>
 </nav>
