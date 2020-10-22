@@ -10,8 +10,8 @@ import { User } from '../models/user';
 export class AuthService {
   private readonly baseUrl = 'https://localhost:5001/api/account/';
 
-  private userSource = new ReplaySubject<User>(1);
-  currentUser$ = this.userSource.asObservable();
+  private _userSource = new ReplaySubject<User>(1);
+  currentUser$ = this._userSource.asObservable();
 
   constructor(private _http: HttpClient) { }
 
@@ -22,19 +22,35 @@ export class AuthService {
         map((response: User) => {
           const user = response;
           if (user) {
-            localStorage.setItem('CurrentUser', JSON.stringify(user));
-            this.userSource.next(user);
+            this.saveUserToLocalStorage(user);
           }
         })
       );
   }
 
+  register(model: any): Observable<any> {
+    return this._http
+      .post(this.baseUrl + 'register', model)
+      .pipe(
+        map((user: User) => {
+          if (user) {
+            this.saveUserToLocalStorage(user);
+          }
+        })
+      );
+  }
+
+  private saveUserToLocalStorage(user: User): void {
+    localStorage.setItem('CurrentUser', JSON.stringify(user));
+    this._userSource.next(user);
+  }
+
   setCurrentUser(user): void {
-    this.userSource.next(user);
+    this._userSource.next(user);
   }
 
   logout(): void {
     localStorage.removeItem('CurrentUser');
-    this.userSource.next(null);
+    this._userSource.next(null);
   }
 }

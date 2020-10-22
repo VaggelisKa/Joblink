@@ -1,5 +1,4 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { User } from '../models/user';
 
@@ -13,6 +12,7 @@ import { AuthService } from '../services/auth.service';
 export class NavComponent implements OnInit {
   model: any = {};
   currentUser$: Observable<User>;
+  username = '';
 
   constructor(private _authService: AuthService) { }
 
@@ -21,7 +21,7 @@ export class NavComponent implements OnInit {
   }
 
   onLogin(): void {
-    this._authService.login(this.model).subscribe(response => {
+    this._authService.login(this.model).subscribe(user => {
 
     }, error => {
       console.log(error);
