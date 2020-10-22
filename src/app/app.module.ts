@@ -9,9 +9,10 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomeComponent } from './home/home.component';
 import { RegisterComponent } from './register/register.component';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
-   declarations: [		
+   declarations: [
       AppComponent,
       NavComponent,
       HomeComponent,
@@ -19,6 +20,7 @@ import { RegisterComponent } from './register/register.component';
    ],
    imports: [
       BrowserModule,
+      AppRoutingModule,
       HttpClientModule,
       FormsModule,
       BrowserAnimationsModule,
