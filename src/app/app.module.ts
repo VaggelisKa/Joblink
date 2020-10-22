@@ -7,11 +7,13 @@ import { NavComponent } from './nav/nav.component';
 import { FormsModule } from '@angular/forms';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
-   declarations: [
+   declarations: [	
       AppComponent,
-      NavComponent
+      NavComponent,
+      HomeComponent
    ],
    imports: [
       BrowserModule,
