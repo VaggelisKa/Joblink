@@ -7,19 +7,20 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class AuthService {
+  private readonly baseUrl = 'https://localhost:5001/api/account/';
 
   constructor(private _http: HttpClient) { }
 
   login(model: any): Observable<any> {
-    return this._http
-      .post<{token: string}>('http://localhost:5000/api/auth/', model)
-      .pipe(
-        map((response) => {
-          const user = response;
-          if (user) {
-            localStorage.setItem('token', user.token);
-          }
-        })
-      );
+    return this._http.post<{token: string}>(this.baseUrl + 'login', model);
+      // .pipe(
+      //   map((response) => {
+      //     const user = response;
+      //     console.log(user);
+      //     if (user) {
+      //       localStorage.setItem('token', user.token);
+      //     }
+      //   })
+      // );
   }
 }

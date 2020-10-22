@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-  <a class="navbar-brand">Dating App</a>
-
-    <ul class="navbar-nav mr-auto">
+  <div class="container">
+    <a class="navbar-brand">Dating App</a>
+    <ul class="navbar-nav mr-auto" *ngIf="isLoggedIn">
       <li class="nav-item active">
         <a class="nav-link">Matches </a>
       </li>
@@ -12,12 +12,20 @@
         <a class="nav-link" tabindex="-1" aria-disabled="true">Messages</a>
       </li>
     </ul>
-    <form #loginForm="ngForm" (ngSubmit)="onLogin(loginForm)" class="form-inline my-2 my-lg-0">
+    <div class="dropdown" *ngIf="isLoggedIn" dropdown>
+      <a class="dropdown-toggle text-light" dropdownToggle>Welcome User</a>
+      <div class="dropdown-menu mt-3" *dropdownMenu>
+        <a class="dropdown-item">Edit Profile</a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" (click)="logout()">Logout</a>
+      </div>
+    </div>
+    <form #loginForm="ngForm" (ngSubmit)="onLogin()" *ngIf="!isLoggedIn" class="form-inline my-2 my-lg-0">
       <input 
         class="form-control mr-sm-2" 
         type="text" 
         placeholder="Username" 
-        ngModel
+        [(ngModel)]="model.username"
         name="username"
         required
         #usernameInput="ngModel"
@@ -26,11 +34,12 @@
         class="form-control mr-sm-2" 
         type="password" 
         placeholder="Password" 
-        ngModel
+        [(ngModel)]="model.password"
         name="password"
         required
         #pwInput="ngModel"
       >
-      <button [disabled]="!loginForm.valid" class="btn btn-success my-2 my-sm-0" type="submit">Login</button>
+      <button [disabled]="!loginForm.valid" class="btn btn-success my-2 my-sm-0" type="submit" *ngIf="!isLoggedIn">Login</button>
     </form>
+  </div>
 </nav>
