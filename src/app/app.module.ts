@@ -11,6 +11,8 @@ import { HomeComponent } from './home/home.component';
 import { RegisterComponent } from './auth/components/register/register.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ErrorInterceptor } from './interceptors/error.interceptor';
+import { NotFoundComponent } from './errors/not-found/not-found.component';
+import { ServerErrorComponent } from './errors/server-error/server-error.component';
 
 
 
@@ -19,7 +21,9 @@ import { ErrorInterceptor } from './interceptors/error.interceptor';
       AppComponent,
       NavComponent,
       HomeComponent,
-      RegisterComponent
+      RegisterComponent,
+      NotFoundComponent,
+      ServerErrorComponent
    ],
    imports: [
       BrowserModule,
