@@ -11,6 +11,8 @@ import { HomeComponent } from './home/home.component';
 import { RegisterComponent } from './register/register.component';
 import { AppRoutingModule } from './app-routing.module';
 
+import { ToastrModule } from 'ngx-toastr';
+
 @NgModule({
    declarations: [
       AppComponent,
@@ -24,7 +26,10 @@ import { AppRoutingModule } from './app-routing.module';
       HttpClientModule,
       FormsModule,
       BrowserAnimationsModule,
-      BsDropdownModule.forRoot()
+      BsDropdownModule.forRoot(),
+      ToastrModule.forRoot({
+         positionClass: 'toast-bottom-right'
+      })
    ],
    providers: [],
    bootstrap: [

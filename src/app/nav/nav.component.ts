@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { Observable } from 'rxjs';
 import { User } from '../models/user';
 
@@ -16,7 +17,8 @@ export class NavComponent implements OnInit {
   username = '';
 
   constructor(private _authService: AuthService,
-              private _router: Router) { }
+              private _router: Router,
+              private _toastr: ToastrService) { }
 
   ngOnInit() {
     this.currentUser$ = this._authService.currentUser$;
@@ -26,7 +28,7 @@ export class NavComponent implements OnInit {
     this._authService.login(this.model).subscribe((_) => {
       this._router.navigateByUrl('/members');
     }, error => {
-      console.log(error);
+      this._toastr.error(error.error);
     });
   }
 
