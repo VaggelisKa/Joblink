@@ -3,13 +3,14 @@ import { NgModule } from '@angular/core';
 import { SharedModule } from './shared/shared.module';
 
 import { AppComponent } from './app.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NavComponent } from './auth/components/nav/nav.component';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomeComponent } from './home/home.component';
 import { RegisterComponent } from './auth/components/register/register.component';
 import { AppRoutingModule } from './app-routing.module';
+import { ErrorInterceptor } from './interceptors/error.interceptor';
 
 
 
@@ -28,7 +29,9 @@ import { AppRoutingModule } from './app-routing.module';
       BrowserAnimationsModule,
       SharedModule
    ],
-   providers: [],
+   providers: [
+      {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true}
+   ],
    bootstrap: [
       AppComponent
    ]

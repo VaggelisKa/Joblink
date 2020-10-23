@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AuthGuard } from './auth/auth.guard';
+import { TestErrorsComponent } from './errors/test-errors/test-errors.component';
 
 import { HomeComponent } from './home/home.component';
 import { ListsComponent } from './lists/lists.component';
@@ -18,9 +19,10 @@ const routes: Routes = [
             {path: 'members', component: MemberListComponent, canActivate: [AuthGuard]},
             {path: 'members/:id', component: MemberDetailComponent},
             {path: 'lists', component: ListsComponent},
+            {path: 'messages', component: MessagesComponent},
         ]
     },
-    {path: 'messages', component: MessagesComponent},
+    {path: 'errors', component: TestErrorsComponent},
     {path: '**', component: HomeComponent, pathMatch: 'full'}
 ];
 
