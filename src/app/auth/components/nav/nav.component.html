@@ -1,6 +1,6 @@
-<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+<nav class="navbar navbar-expand-md navbar-dark bg-primary">
   <div class="container">
-    <a class="navbar-brand" routerLink="/">Dating App</a>
+    <a class="navbar-brand" routerLink="/">Jhunt</a>
     <ul class="navbar-nav mr-auto">
       <ng-container *ngIf="currentUser$ | async">
         <li class="nav-item">
@@ -14,8 +14,8 @@
         </li>
       </ng-container>
     </ul>
-    <div class="dropdown" *ngIf="currentUser$ | async" dropdown>
-      <a class="dropdown-toggle text-light" dropdownToggle>Welcome {{username}}</a>
+    <div class="dropdown" *ngIf="(currentUser$ | async) as user" dropdown>
+      <a class="dropdown-toggle text-light" dropdownToggle>Hi, {{user.username}}</a>
       <div class="dropdown-menu mt-3" *dropdownMenu>
         <a class="dropdown-item">Edit Profile</a>
         <div class="dropdown-divider"></div>
@@ -41,7 +41,7 @@
         required
         #pwInput="ngModel"
       >
-      <button [disabled]="!loginForm.valid" class="btn btn-success my-2 my-sm-0" type="submit">Login</button>
+      <button [disabled]="!loginForm.valid" class="btn btn-success my-2 my-sm-0 btn-sm" type="submit">Login</button>
     </form>
   </div>
 </nav>

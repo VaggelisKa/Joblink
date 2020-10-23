@@ -5,3 +5,8 @@
 .dropdown-toggle {
     text-decoration: none;
 }
+
+.btn {
+    border-radius: 15%;
+    padding: 0.8rem;
+}
