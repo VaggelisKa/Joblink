@@ -16,6 +16,7 @@ import { ServerErrorComponent } from './errors/server-error/server-error.compone
 import { MemberListComponent } from './members/member-list/member-list.component';
 import { MemberCardComponent } from './members/member-card/member-card.component';
 import { TokenInterceptor } from './interceptors/token.interceptor';
+import { MemberDetailComponent } from './members/member-detail/member-detail.component';
 
 
 
@@ -28,7 +29,8 @@ import { TokenInterceptor } from './interceptors/token.interceptor';
       NotFoundComponent,
       ServerErrorComponent,
       MemberListComponent,
-      MemberCardComponent
+      MemberCardComponent,
+      MemberDetailComponent
    ],
    imports: [
       BrowserModule,
