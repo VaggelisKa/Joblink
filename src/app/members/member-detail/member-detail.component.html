@@ -1,3 +1,55 @@
-<p *ngIf="member">
-  {{member.username}}
-</p>
+<div class="row" *ngIf="member">
+  <div class="col-4">
+    <div class="card">
+      <img 
+        src="{{member.photoUrl}}" 
+        alt="{{member.username}}" 
+        class="card-img-top img-thumbnail"
+      >
+      <div class="card-body text-center">
+        <div>
+          <strong>Location: </strong>
+          <p>{{member.city}}</p>
+        </div>
+        <div>
+          <strong>Age: </strong>
+          <p>{{member.age}}</p>
+        </div>
+        <div>
+          <strong>Member since: </strong>
+          <p>{{member.created | date}}</p>
+        </div>
+        <div>
+          <strong>Last Active: </strong>
+          <p>{{member.lastActive | date}}</p>
+        </div>
+      </div>
+      <div class="card-footer">
+        <div class="btn-group d-flex">
+          <button class="btn btn-primary mr-2">Like</button>
+          <button class="btn btn-success">Message</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-8">
+    <tabset class="member-tabset">
+      <tab heading="About {{member.username}}">
+        <h4>Description</h4>
+        <p>{{member.bio}}</p>
+        <h4>Looking for</h4>
+        <p>{{member.lookingFor}}</p>
+      </tab>
+      <tab heading="Skills">
+        <h4>Skills</h4>
+        <p>{{member.skills}}</p>
+      </tab>
+      <tab heading="Photos">
+        <p>Photos here</p>
+      </tab>
+      <tab heading="Messages">
+        <p>Messages here</p>
+      </tab>
+    </tabset>
+  </div>
+</div>

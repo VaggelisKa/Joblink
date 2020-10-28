@@ -4,6 +4,8 @@ import { CommonModule } from '@angular/common';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { ToastrModule } from 'ngx-toastr';
 import { ErrorDisplayComponent } from './components/error-display/error-display.component';
+import { TabsModule } from 'ngx-bootstrap/tabs';
+import { map } from 'rxjs/operators';
 
 
 
@@ -15,11 +17,13 @@ import { ErrorDisplayComponent } from './components/error-display/error-display.
     ToastrModule.forRoot({
        positionClass: 'toast-bottom-right'
     }),
+    TabsModule.forRoot()
   ],
   exports: [
     BsDropdownModule,
     ToastrModule,
-    ErrorDisplayComponent
+    ErrorDisplayComponent,
+    TabsModule
   ]
 })
 export class SharedModule { }
