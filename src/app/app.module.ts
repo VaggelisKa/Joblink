@@ -13,6 +13,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { ErrorInterceptor } from './interceptors/error.interceptor';
 import { NotFoundComponent } from './errors/not-found/not-found.component';
 import { ServerErrorComponent } from './errors/server-error/server-error.component';
+import { MemberListComponent } from './members/member-list/member-list.component';
+import { MemberCardComponent } from './members/member-card/member-card.component';
 
 
 
@@ -23,7 +25,9 @@ import { ServerErrorComponent } from './errors/server-error/server-error.compone
       HomeComponent,
       RegisterComponent,
       NotFoundComponent,
-      ServerErrorComponent
+      ServerErrorComponent,
+      MemberListComponent,
+      MemberCardComponent
    ],
    imports: [
       BrowserModule,
