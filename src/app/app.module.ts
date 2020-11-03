@@ -18,6 +18,7 @@ import { MemberCardComponent } from './members/member-card/member-card.component
 import { TokenInterceptor } from './interceptors/token.interceptor';
 import { MemberDetailComponent } from './members/member-detail/member-detail.component';
 import { MemberEditComponent } from './members/member-edit/member-edit.component';
+import { LoadingInterceptor } from './interceptors/loading.interceptor';
 
 
 
@@ -40,11 +41,12 @@ import { MemberEditComponent } from './members/member-edit/member-edit.component
       HttpClientModule,
       FormsModule,
       BrowserAnimationsModule,
-      SharedModule
+      SharedModule,
    ],
    providers: [
       {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},
-      {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true}
+      {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true},
+      {provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true}
    ],
    bootstrap: [
       AppComponent

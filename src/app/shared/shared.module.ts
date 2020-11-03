@@ -5,8 +5,8 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { ToastrModule } from 'ngx-toastr';
 import { ErrorDisplayComponent } from './components/error-display/error-display.component';
 import { TabsModule } from 'ngx-bootstrap/tabs';
-import { map } from 'rxjs/operators';
 import { NgxGalleryModule } from '@kolkov/ngx-gallery';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 
 
@@ -19,14 +19,16 @@ import { NgxGalleryModule } from '@kolkov/ngx-gallery';
        positionClass: 'toast-bottom-right'
     }),
     TabsModule.forRoot(),
-    NgxGalleryModule
+    NgxGalleryModule,
+    NgxSpinnerModule
   ],
   exports: [
     BsDropdownModule,
     ToastrModule,
     ErrorDisplayComponent,
     TabsModule,
-    NgxGalleryModule
+    NgxGalleryModule,
+    NgxSpinnerModule
   ]
 })
 export class SharedModule { }
