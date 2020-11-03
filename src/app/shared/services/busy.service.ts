@@ -13,8 +13,8 @@ export class BusyService {
     this.requestCount++;
     this._spinner.show(undefined, {
       type: 'ball-running-dots',
-      bdColor: 'rgba(255,255,255,0)',
-      color: '#333'
+      bdColor: 'rgba(0,0,0,0.6)',
+      color: '#fff'
     });
   }
 
