@@ -10,3 +10,11 @@
     border-radius: 15%;
     padding: 0.8rem;
 }
+
+img {
+    max-height: 38px;
+    max-width: 38px;
+    margin-right: 5px;
+    border-radius: 50%;
+    display: inline;
+}
