@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { ToastrModule } from 'ngx-toastr';
@@ -7,6 +8,8 @@ import { ErrorDisplayComponent } from './components/error-display/error-display.
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { NgxGalleryModule } from '@kolkov/ngx-gallery';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { FileUploadModule } from 'ng2-file-upload';
+
 
 
 
@@ -20,7 +23,9 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     }),
     TabsModule.forRoot(),
     NgxGalleryModule,
-    NgxSpinnerModule
+    NgxSpinnerModule,
+    FileUploadModule,
+    NgbModule
   ],
   exports: [
     BsDropdownModule,
@@ -28,7 +33,9 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     ErrorDisplayComponent,
     TabsModule,
     NgxGalleryModule,
-    NgxSpinnerModule
+    NgxSpinnerModule,
+    FileUploadModule,
+    NgbModule
   ]
 })
 export class SharedModule { }

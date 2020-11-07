@@ -1,0 +1,37 @@
+img.img-thumbnail {
+    height: 100px;
+    min-width: 100px !important;
+    margin-bottom: 2px;
+}
+
+.nv-file-over {
+    border: dotted 3px black;
+}
+
+input[type=file] {
+    color: transparent;
+}
+
+#add-button, #delete-button {
+    border: none;
+    background-color: inherit;
+    cursor: pointer;
+}
+
+#add-button:hover {
+    border: none;
+    color:darkgreen;
+    cursor: pointer;
+}
+
+#delete-button:hover {
+    border: none;
+    color: lawngreen;
+    cursor: pointer;
+}
+
+#photo-edit-buttons {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+}
