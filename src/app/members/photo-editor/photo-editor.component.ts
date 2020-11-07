@@ -3,8 +3,10 @@ import { FileUploader } from 'ng2-file-upload';
 import { take } from 'rxjs/operators';
 import { AuthService } from 'src/app/auth/auth.service';
 import { Member } from 'src/app/models/member';
+import { Photo } from 'src/app/models/photo';
 import { User } from 'src/app/models/user';
 import { environment } from 'src/environments/environment';
+import { MembersService } from '../members.service';
 
 @Component({
   selector: 'app-photo-editor',
@@ -21,7 +23,8 @@ export class PhotoEditorComponent implements OnInit {
   hasBaseDropZoneOver = false;
   baseUrl = environment.apiUrl;
 
-  constructor(private _authService: AuthService) { }
+  constructor(private _authService: AuthService,
+              private _membersService: MembersService) { }
 
   ngOnInit(): void {
     this.isCollapsed = false;
@@ -62,6 +65,24 @@ export class PhotoEditorComponent implements OnInit {
 
   toggleCollapse(): void {
     this.isCollapsed = !this.isCollapsed;
+  }
+
+  setMainPhoto(photo: Photo): void {
+    this._membersService.setMainPhoto(photo.id).subscribe(() => {
+      this.user.photoUrl = photo.url;
+      this._authService.setCurrentUser(this.user);
+      this.member.photoUrl = photo.url;
+
+      this.member.photos.forEach(p => {
+        if (p.isMain) {
+          p.isMain = false;
+        }
+
+        if (p.id === photo.id) {
+          p.isMain = true;
+        }
+      });
+    });
   }
 
 }

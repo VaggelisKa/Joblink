@@ -24,7 +24,7 @@ export class AuthService {
         map((response: User) => {
           const user = response;
           if (user) {
-            this.saveUserToLocalStorage(user);
+            this.setCurrentUser(user);
           }
         })
       );
@@ -36,19 +36,15 @@ export class AuthService {
       .pipe(
         map((user: User) => {
           if (user) {
-            this.saveUserToLocalStorage(user);
+            this.setCurrentUser(user);
           }
         })
       );
   }
 
-  private saveUserToLocalStorage(user: User): void {
-    localStorage.setItem('CurrentUser', JSON.stringify(user));
-    this._userSource.next(user);
-  }
-
   setCurrentUser(user): void {
     this._userSource.next(user);
+    localStorage.setItem('CurrentUser', JSON.stringify(user));
   }
 
   logout(): void {
