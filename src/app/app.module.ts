@@ -19,6 +19,7 @@ import { TokenInterceptor } from './interceptors/token.interceptor';
 import { MemberDetailComponent } from './members/member-detail/member-detail.component';
 import { MemberEditComponent } from './members/member-edit/member-edit.component';
 import { LoadingInterceptor } from './interceptors/loading.interceptor';
+import { PhotoEditorComponent } from './members/photo-editor/photo-editor.component';
 
 
 
@@ -33,7 +34,8 @@ import { LoadingInterceptor } from './interceptors/loading.interceptor';
       MemberListComponent,
       MemberCardComponent,
       MemberDetailComponent,
-      MemberEditComponent
+      MemberEditComponent,
+      PhotoEditorComponent
    ],
    imports: [
       BrowserModule,
