@@ -1,4 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 
 import { AuthService } from '../../auth.service';
@@ -9,13 +10,24 @@ import { AuthService } from '../../auth.service';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-  model: any = {};
   @Output() cancelRegistration = new EventEmitter<boolean>();
+
+  model: any = {};
+  registerForm: FormGroup;
 
   constructor(private _authService: AuthService,
               private _toastr: ToastrService) { }
 
   ngOnInit() {
+    this.initializeForm();
+  }
+
+  initializeForm(): void {
+    this.registerForm = new FormGroup({
+      username: new FormControl(),
+      password: new FormControl(),
+      confirmPassword: new FormControl()
+    });
   }
 
   register() {
