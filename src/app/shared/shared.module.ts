@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ReactiveFormsModule } from '@angular/forms';
+
 
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { ToastrModule } from 'ngx-toastr';
@@ -9,14 +11,17 @@ import { TabsModule } from 'ngx-bootstrap/tabs';
 import { NgxGalleryModule } from '@kolkov/ngx-gallery';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { FileUploadModule } from 'ng2-file-upload';
+import { TextInputComponent } from './components/forms/text-input/text-input.component';
+
 
 
 
 
 @NgModule({
-  declarations: [ErrorDisplayComponent],
+  declarations: [ErrorDisplayComponent, TextInputComponent],
   imports: [
     CommonModule,
+    ReactiveFormsModule,
     BsDropdownModule.forRoot(),
     ToastrModule.forRoot({
        positionClass: 'toast-bottom-right'
@@ -25,7 +30,8 @@ import { FileUploadModule } from 'ng2-file-upload';
     NgxGalleryModule,
     NgxSpinnerModule,
     FileUploadModule,
-    NgbModule
+    NgbModule,
+    
   ],
   exports: [
     BsDropdownModule,
@@ -35,7 +41,8 @@ import { FileUploadModule } from 'ng2-file-upload';
     NgxGalleryModule,
     NgxSpinnerModule,
     FileUploadModule,
-    NgbModule
+    NgbModule,
+    TextInputComponent
   ]
 })
 export class SharedModule { }
