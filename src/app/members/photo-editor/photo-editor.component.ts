@@ -1,5 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit } from '@angular/core';
 import { FileUploader } from 'ng2-file-upload';
+import { ToastrService } from 'ngx-toastr';
 import { take } from 'rxjs/operators';
 import { AuthService } from 'src/app/auth/auth.service';
 import { Member } from 'src/app/models/member';
@@ -24,16 +25,19 @@ export class PhotoEditorComponent implements OnInit {
   baseUrl = environment.apiUrl;
 
   constructor(private _authService: AuthService,
-              private _membersService: MembersService) { }
+              private _membersService: MembersService,
+              private _toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.isCollapsed = false;
+    this.member.photos.sort(x => x.isMain ? -1 : 1);
     this._authService.currentUser$.pipe(take(1)).subscribe(user => {
       this.user = user;
     });
 
     this.initializeUploader();
   }
+
 
   fileOverBase(event: any) {
     this.hasBaseDropZoneOver = event;
@@ -82,6 +86,14 @@ export class PhotoEditorComponent implements OnInit {
           p.isMain = true;
         }
       });
+    });
+  }
+
+  deletePhoto(photo: Photo): void {
+    this._membersService.deletePhoto(photo.id).subscribe((_) => {
+      this.member.photos = this.member.photos.filter(p => p.id !== photo.id)
+          .sort(x => x.isMain ? -1 : 1);
+      this._toastr.success('Photo successfully deleted');
     });
   }
 

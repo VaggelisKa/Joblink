@@ -8,7 +8,7 @@
                 (click)="setMainPhoto(photo)"
                 [ngClass]='photo.isMain ? "btn-success active" : "choose-main-button"'
             >Main</button>
-            <button id="delete-button" class="btn btn-sm btn-danger">
+            <button id="delete-button" class="btn btn-sm btn-danger" (click)="deletePhoto(photo)">
                 <i style="color: red;" class="fa fa-trash fa-2x"></i>
             </button>
         </div>
