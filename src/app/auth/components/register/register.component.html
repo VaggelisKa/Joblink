@@ -1,9 +1,20 @@
 <form [formGroup]="registerForm" (ngSubmit)="register()" autocomplete="off">
   <h2 class="text-center text-primary">Sign Up</h2>
   <hr>
+  <div class="form-group">
+    <label style="margin-right: 10px;" class="control-label">I am an: </label>
+    <label class="radio-inline">
+      <input type="radio" value="employee" formControlName="gender"> Employee
+    </label>
+    <label class="radio-inline">
+      <input type="radio" value="employer" formControlName="gender" class="ml-3"> Employer
+    </label>
+  </div>
   <app-text-input [formControl]='registerForm.controls["username"]' [label]="'Username'"></app-text-input>
   <app-text-input [formControl]='registerForm.controls["password"]' [type]="'password'" [label]="'Password'"></app-text-input>
   <app-text-input [formControl]='registerForm.controls["confirmPassword"]' [type]="'password'" [label]="'Confirm Password'"></app-text-input>
+  <app-text-input [formControl]='registerForm.controls["dateOfBirth"]' [label]="'Date of birth'"></app-text-input>
+  <app-text-input [formControl]='registerForm.controls["city"]' [label]="'Based in city'"></app-text-input>
   <div class="form-group text-center">
     <button class="btn btn-success mr-2 " type="submit" [disabled]="registerForm.invalid">Register</button>
     <button class="btn btn- mr-2 btn-sm" type="button" (click)="cancel()">Cancel</button>
