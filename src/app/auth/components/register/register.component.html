@@ -13,7 +13,7 @@
   <app-text-input [formControl]='registerForm.controls["username"]' [label]="'Username'"></app-text-input>
   <app-text-input [formControl]='registerForm.controls["password"]' [type]="'password'" [label]="'Password'"></app-text-input>
   <app-text-input [formControl]='registerForm.controls["confirmPassword"]' [type]="'password'" [label]="'Confirm Password'"></app-text-input>
-  <app-text-input [formControl]='registerForm.controls["dateOfBirth"]' [label]="'Date of birth'"></app-text-input>
+  <app-date-input [formControl]='registerForm.controls["dateOfBirth"]' [maxDate]="maxDate" [minDate]="minDate" [label]="'Date of birth'"></app-date-input>
   <app-text-input [formControl]='registerForm.controls["city"]' [label]="'Based in city'"></app-text-input>
   <div class="form-group text-center">
     <button class="btn btn-success mr-2 " type="submit" [disabled]="registerForm.invalid">Register</button>

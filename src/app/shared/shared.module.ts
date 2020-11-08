@@ -12,13 +12,15 @@ import { NgxGalleryModule } from '@kolkov/ngx-gallery';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { FileUploadModule } from 'ng2-file-upload';
 import { TextInputComponent } from './components/forms/text-input/text-input.component';
+import { BsDatepickerModule, DatePickerComponent } from 'ngx-bootstrap/datepicker';
+import { DateInputComponent } from './components/forms/date-input/date-input.component';
 
 
 
 
 
 @NgModule({
-  declarations: [ErrorDisplayComponent, TextInputComponent],
+  declarations: [ErrorDisplayComponent, TextInputComponent, DateInputComponent],
   imports: [
     CommonModule,
     ReactiveFormsModule,
@@ -31,7 +33,7 @@ import { TextInputComponent } from './components/forms/text-input/text-input.com
     NgxSpinnerModule,
     FileUploadModule,
     NgbModule,
-    
+    BsDatepickerModule.forRoot(),
   ],
   exports: [
     BsDropdownModule,
@@ -42,7 +44,9 @@ import { TextInputComponent } from './components/forms/text-input/text-input.com
     NgxSpinnerModule,
     FileUploadModule,
     NgbModule,
-    TextInputComponent
+    TextInputComponent,
+    BsDatepickerModule,
+    DateInputComponent
   ]
 })
 export class SharedModule { }
