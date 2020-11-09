@@ -2,7 +2,7 @@
   <div class="col-4">
     <div class="card">
       <img 
-        src="{{member.photoUrl}}" 
+        src="{{member.photoUrl || './assets/user.png'}}" 
         alt="{{member.username}}" 
         class="card-img-top img-thumbnail"
       >
@@ -34,15 +34,19 @@
   </div>
   <div class="col-8">
     <tabset class="member-tabset">
-      <tab heading="About {{member.username}}">
+      <tab heading="About" *ngIf="member.bio || member.lookingFor">
         <h4>Description</h4>
         <p>{{member.bio}}</p>
         <h4>Looking for</h4>
         <p>{{member.lookingFor}}</p>
       </tab>
-      <tab heading="Skills">
-        <h4>Skills</h4>
-        <p>{{member.skills}}</p>
+      <tab heading="About" *ngIf="!member.bio && !member.lookingFor">
+        <p>No content</p>
+      </tab>
+      <tab heading="Skills" *ngIf="member.gender != 'employer'">
+        <h4 *ngIf="member.skills?.length > 0">Skills</h4>
+        <p *ngIf="member.skills?.length > 0; else noSkills">{{member.skills}}</p>
+        <p #noSkills>No content</p>
       </tab>
       <tab heading="Photos">
         <ngx-gallery 

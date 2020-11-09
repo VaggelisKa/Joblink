@@ -10,7 +10,7 @@
       <input type="radio" value="employer" formControlName="gender" class="ml-3"> Employer
     </label>
   </div>
-  <app-text-input [formControl]='registerForm.controls["username"]' [label]="'Username'"></app-text-input>
+  <app-text-input [formControl]='registerForm.controls["username"]' [label]="'Name + Surname'"></app-text-input>
   <app-text-input [formControl]='registerForm.controls["password"]' [type]="'password'" [label]="'Password'"></app-text-input>
   <app-text-input [formControl]='registerForm.controls["confirmPassword"]' [type]="'password'" [label]="'Confirm Password'"></app-text-input>
   <app-date-input [formControl]='registerForm.controls["dateOfBirth"]' [maxDate]="maxDate" [minDate]="minDate" [label]="'Date of birth'"></app-date-input>

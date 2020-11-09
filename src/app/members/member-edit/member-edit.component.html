@@ -10,7 +10,7 @@
     <div class="col-4">
       <div class="card">
         <img 
-          src="{{member.photoUrl}}" 
+          src="{{member.photoUrl || './assets/user.png'}}"
           alt="{{member.username}}" 
           class="card-img-top img-thumbnail"
         >
@@ -55,9 +55,10 @@
                     rows="6"
                     class="form-control"
                 ></textarea>
-                <h4 class="mt-2">Skills</h4>
+                <h4 class="mt-2" *ngIf="member.gender != 'employer'">Skills</h4>
                 <textarea
-                    [(ngModel)]="member.skills"  
+                    [(ngModel)]="member.skills"
+                    *ngIf="member.gender != 'employer'"  
                     name="skills" 
                     rows="6"
                     class="form-control"
