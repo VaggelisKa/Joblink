@@ -17,6 +17,16 @@ export class MemberListComponent implements OnInit {
   pagination: Pagination;
   userParams: UserParams;
   user: User;
+  typeOfUsersList = [
+    {
+      value: 'employer', 
+      display: 'Employers'
+    },
+    {
+      value: 'employee',
+      display: 'Employees'
+    }
+  ];
 
   constructor(private _membersService: MembersService,
               private _authService: AuthService) { }
@@ -35,6 +45,11 @@ export class MemberListComponent implements OnInit {
       this.members = response.result;
       this.pagination = response.pagination;
     });
+  }
+
+  resetFilters(): void {
+    this.userParams = new UserParams(this.user);
+    this.loadMembers();
   }
 
   pageChanged(event: any): void {
