@@ -18,10 +18,19 @@ export class MemberListComponent implements OnInit {
   constructor(private _membersService: MembersService) { }
 
   ngOnInit(): void {
+    this.loadMembers();
+  }
+
+  loadMembers(): void {
     this._membersService.getMembers(this.pageNumber, this.pageSize).subscribe(response => {
       this.members = response.result;
       this.pagination = response.pagination;
     });
+  }
+
+  pageChanged(event: any): void {
+    this.pageNumber = event.page;
+    this.loadMembers();
   }
 
 }

@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
@@ -12,9 +12,9 @@ import { NgxGalleryModule } from '@kolkov/ngx-gallery';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { FileUploadModule } from 'ng2-file-upload';
 import { TextInputComponent } from './components/forms/text-input/text-input.component';
-import { BsDatepickerModule, DatePickerComponent } from 'ngx-bootstrap/datepicker';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { DateInputComponent } from './components/forms/date-input/date-input.component';
-
+import { PaginationModule } from 'ngx-bootstrap/pagination';
 
 
 
@@ -24,6 +24,7 @@ import { DateInputComponent } from './components/forms/date-input/date-input.com
   imports: [
     CommonModule,
     ReactiveFormsModule,
+    FormsModule,
     BsDropdownModule.forRoot(),
     ToastrModule.forRoot({
        positionClass: 'toast-bottom-right'
@@ -34,6 +35,7 @@ import { DateInputComponent } from './components/forms/date-input/date-input.com
     FileUploadModule,
     NgbModule,
     BsDatepickerModule.forRoot(),
+    PaginationModule.forRoot(),
   ],
   exports: [
     BsDropdownModule,
@@ -46,7 +48,8 @@ import { DateInputComponent } from './components/forms/date-input/date-input.com
     NgbModule,
     TextInputComponent,
     BsDatepickerModule,
-    DateInputComponent
+    DateInputComponent,
+    PaginationModule,
   ]
 })
 export class SharedModule { }
