@@ -44,9 +44,9 @@
         <p>No content</p>
       </tab>
       <tab heading="Skills" *ngIf="member.gender != 'employer'">
-        <h4 *ngIf="member.skills?.length > 0">Skills</h4>
-        <p *ngIf="member.skills?.length > 0; else noSkills">{{member.skills}}</p>
-        <p #noSkills>No content</p>
+        <h4 *ngIf="member.skills">Skills</h4>
+        <p *ngIf="member.skills; else noSkills;">{{member.skills}}</p>
+        <ng-template #noSkills><p>No content</p></ng-template>
       </tab>
       <tab heading="Photos">
         <ngx-gallery 
