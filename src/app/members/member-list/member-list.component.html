@@ -26,9 +26,9 @@
     </div>
     <div class="form-group px-2">
       <label>Show </label>
-      <select name="typeOfUsers" style="width: 139px; height: 40px;" class="form-control ml-1">
-        <option *ngFor="let type of typeOfUsersList" [value]="type.value">
-          {{type.display}}
+      <select name="gender" style="width: 139px; height: 40px;" [(ngModel)]="userParams.gender" class="form-control ml-1">
+        <option *ngFor="let gender of genderList" [value]="gender.value">
+          {{gender.display}}
         </option>
       </select>
     </div>

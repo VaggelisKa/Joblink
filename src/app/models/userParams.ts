@@ -1,14 +1,14 @@
 import { User } from './user';
 
 export class UserParams {
-    typeOfUser: string;
+    gender: string;
     minAge = 16;
     maxAge = 115;
     pageNumber = 1;
     pageSize = 5;
 
     constructor(user: User) {
-        this.typeOfUser = user.typeOfUser === 'employer' ? 'employee' : 'employer';
+        this.gender = user.gender === 'employer' ? 'employee' : 'employer';
     }
 
 }

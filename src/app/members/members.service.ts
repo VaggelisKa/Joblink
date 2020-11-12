@@ -19,12 +19,12 @@ export class MembersService {
   constructor(private _http: HttpClient) { }
 
   getMembers(userParams: UserParams): Observable<PaginatedResult<Member[]>> {
-    const { pageNumber, pageSize, minAge, maxAge, typeOfUser } = userParams;
+    const { pageNumber, pageSize, minAge, maxAge, gender } = userParams;
 
     let params = this.getPaginationHeaders(pageNumber, pageSize);
     params = params.append('minAge', minAge.toString());
     params = params.append('maxAge', maxAge.toString());
-    params = params.append('typeOfUser', typeOfUser);
+    params = params.append('gender', gender);
 
     return this.getPaginatedResults<Member[]>(this.baseUrl + 'users', params);
   }

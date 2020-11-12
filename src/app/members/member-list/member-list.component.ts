@@ -17,7 +17,7 @@ export class MemberListComponent implements OnInit {
   pagination: Pagination;
   userParams: UserParams;
   user: User;
-  typeOfUsersList = [
+  genderList = [
     {
       value: 'employer', 
       display: 'Employers'
