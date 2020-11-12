@@ -15,7 +15,7 @@ import { TextInputComponent } from './components/forms/text-input/text-input.com
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { DateInputComponent } from './components/forms/date-input/date-input.component';
 import { PaginationModule } from 'ngx-bootstrap/pagination';
-
+import { ButtonsModule } from 'ngx-bootstrap/buttons';
 
 
 
@@ -36,6 +36,7 @@ import { PaginationModule } from 'ngx-bootstrap/pagination';
     NgbModule,
     BsDatepickerModule.forRoot(),
     PaginationModule.forRoot(),
+    ButtonsModule.forRoot()
   ],
   exports: [
     BsDropdownModule,
@@ -50,6 +51,7 @@ import { PaginationModule } from 'ngx-bootstrap/pagination';
     BsDatepickerModule,
     DateInputComponent,
     PaginationModule,
+    ButtonsModule
   ]
 })
 export class SharedModule { }
