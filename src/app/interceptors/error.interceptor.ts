@@ -48,7 +48,7 @@ export class ErrorInterceptor implements HttpInterceptor {
               break;
 
             default:
-              this._toastr.error('Something unexpected went wrong');
+              this._toastr.error('Server is down please try again later');
           }
         }
         return throwError(error);
