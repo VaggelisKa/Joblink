@@ -76,7 +76,10 @@ export class MembersService {
   }
 
   getMemberByUsername(username: string): Observable<Member> {
-    const member = this.members.find(x => x.username === username);
+    const member = [...this.memberCache.values()]
+        .reduce((arr, elem) => arr.concat(elem.result), [])
+        .find((m: Member)  => m.username === username);
+
     if (member) {
       return of(member);
     }
