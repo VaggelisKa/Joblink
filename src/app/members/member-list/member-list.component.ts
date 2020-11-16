@@ -34,6 +34,13 @@ export class MemberListComponent implements OnInit {
   ngOnInit(): void {
     this._authService.currentUser$.pipe(take(1)).subscribe(user => {
       this.user = user;
+
+      const paramsFromStorage = JSON.parse(sessionStorage.getItem('userParams'));
+      if (paramsFromStorage) {
+        this.userParams = paramsFromStorage;
+        return; 
+      }
+
       this.userParams = new UserParams(user);
     });
 
