@@ -33,7 +33,7 @@ export class MembersService {
       gender,
       orderBy 
     } = userParams;
-    sessionStorage.setItem('userParams', JSON.stringify(userParams));
+    sessionStorage.setItem('User Params', JSON.stringify(userParams));
 
     let params = this.getPaginationHeaders(pageNumber, pageSize);
     params = params.append('minAge', minAge.toString());

@@ -49,7 +49,7 @@ export class AuthService {
 
   logout(): void {
     localStorage.removeItem('CurrentUser');
-    sessionStorage.removeItem('userParams');
+    sessionStorage.removeItem('User Params');
     this._userSource.next(null);
   }
 }

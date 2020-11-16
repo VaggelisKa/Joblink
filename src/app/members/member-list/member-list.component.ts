@@ -35,7 +35,7 @@ export class MemberListComponent implements OnInit {
     this._authService.currentUser$.pipe(take(1)).subscribe(user => {
       this.user = user;
 
-      const paramsFromStorage = JSON.parse(sessionStorage.getItem('userParams'));
+      const paramsFromStorage = JSON.parse(sessionStorage.getItem('User Params'));
       if (paramsFromStorage) {
         this.userParams = paramsFromStorage;
         return; 
