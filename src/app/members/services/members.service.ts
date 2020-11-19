@@ -4,9 +4,9 @@ import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { environment } from 'src/environments/environment';
-import { Member } from '../models/member';
-import { PaginatedResult } from '../models/pagination';
-import { UserParams } from '../models/userParams';
+import { Member } from '../../models/member';
+import { PaginatedResult } from '../../models/pagination';
+import { UserParams } from '../../models/userParams';
 
 
 @Injectable({

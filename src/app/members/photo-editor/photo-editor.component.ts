@@ -7,7 +7,7 @@ import { Member } from 'src/app/models/member';
 import { Photo } from 'src/app/models/photo';
 import { User } from 'src/app/models/user';
 import { environment } from 'src/environments/environment';
-import { MembersService } from '../members.service';
+import { MembersService } from '../services/members.service';
 
 @Component({
   selector: 'app-photo-editor',

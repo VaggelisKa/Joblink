@@ -8,7 +8,7 @@ import { take } from 'rxjs/operators';
 import { AuthService } from 'src/app/auth/auth.service';
 import { Member } from 'src/app/models/member';
 import { User } from 'src/app/models/user';
-import { MembersService } from '../members.service';
+import { MembersService } from '../services/members.service';
 
 @Component({
   selector: 'app-member-edit',
