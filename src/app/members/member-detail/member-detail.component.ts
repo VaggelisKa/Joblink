@@ -13,6 +13,7 @@ export class MemberDetailComponent implements OnInit {
   member: Member;
   galleryOptions: NgxGalleryOptions[];
   galleryImages: NgxGalleryImage[];
+  skillsTextConvertion: string;
 
   constructor(private _membersService: MembersService,
               private _route: ActivatedRoute) { }

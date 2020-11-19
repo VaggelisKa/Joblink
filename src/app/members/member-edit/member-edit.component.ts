@@ -1,6 +1,8 @@
 import { Component, HostListener, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AngularEditorConfig } from '@kolkov/angular-editor';
+import { BsYearsCalendarViewComponent } from 'ngx-bootstrap/datepicker/themes/bs/bs-years-calendar-view.component';
 import { ToastrService } from 'ngx-toastr';
 import { take } from 'rxjs/operators';
 import { AuthService } from 'src/app/auth/auth.service';
@@ -16,6 +18,7 @@ import { MembersService } from '../members.service';
 export class MemberEditComponent implements OnInit {
   member: Member;
   user: User;
+  editorConfig: AngularEditorConfig;
 
   @ViewChild('editForm') editForm: NgForm;
   @HostListener('window:beforeunload', ['$event']) unloadNotification($event: any) {
@@ -33,6 +36,44 @@ export class MemberEditComponent implements OnInit {
   ngOnInit(): void {
     this._authService.currentUser$.pipe(take(1)).subscribe(user => this.user = user);
     this.loadMember();
+
+    this.editorConfig = {
+      editable: true,
+      spellcheck: true,
+      translate: 'yes',
+      height: 'auto',
+      minHeight: '0',
+      maxHeight: 'auto',
+      width: 'auto',
+      minWidth: '0',
+      enableToolbar: true,
+      showToolbar: true,
+      placeholder: 'Enter text here...',
+      defaultParagraphSeparator: '',
+      defaultFontName: '',
+      defaultFontSize: '',
+      fonts: [
+        {class: 'arial', name: 'Arial'},
+        {class: 'times-new-roman', name: 'Times New Roman'},
+        {class: 'calibri', name: 'Calibri'},
+        {class: 'comic-sans-ms', name: 'Comic Sans MS'}
+      ],
+      uploadWithCredentials: false,
+      sanitize: false,
+      toolbarPosition: 'top',
+      toolbarHiddenButtons: [
+        ['bold'],
+        [
+          'link',
+          'unlink',
+          'insertImage',
+          'insertVideo',
+          'customClasses',
+          'indent',
+          'outdent',
+        ]
+      ]
+    };
   }
 
   loadMember(): void {

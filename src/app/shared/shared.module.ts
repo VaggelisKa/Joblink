@@ -17,11 +17,13 @@ import { DateInputComponent } from './components/forms/date-input/date-input.com
 import { PaginationModule } from 'ngx-bootstrap/pagination';
 import { ButtonsModule } from 'ngx-bootstrap/buttons';
 import { TimeagoModule } from 'ngx-timeago';
+import { AngularEditorModule } from '@kolkov/angular-editor';
+import { NoSanitizePipe } from './components/pipes/noSanitize.pipe';
 
 
 
 @NgModule({
-  declarations: [ErrorDisplayComponent, TextInputComponent, DateInputComponent],
+  declarations: [ErrorDisplayComponent, TextInputComponent, DateInputComponent, NoSanitizePipe],
   imports: [
     CommonModule,
     ReactiveFormsModule,
@@ -38,7 +40,8 @@ import { TimeagoModule } from 'ngx-timeago';
     BsDatepickerModule.forRoot(),
     PaginationModule.forRoot(),
     ButtonsModule.forRoot(),
-    TimeagoModule.forRoot()
+    TimeagoModule.forRoot(),
+    AngularEditorModule
   ],
   exports: [
     BsDropdownModule,
@@ -54,7 +57,9 @@ import { TimeagoModule } from 'ngx-timeago';
     DateInputComponent,
     PaginationModule,
     ButtonsModule,
-    TimeagoModule
+    TimeagoModule,
+    AngularEditorModule,
+    NoSanitizePipe
   ]
 })
 export class SharedModule { }

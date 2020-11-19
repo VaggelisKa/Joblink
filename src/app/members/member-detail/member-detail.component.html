@@ -44,8 +44,7 @@
         <p>No content</p>
       </tab>
       <tab heading="Skills" *ngIf="member.gender != 'employer'">
-        <h4 *ngIf="member.skills">Skills</h4>
-        <p *ngIf="member.skills; else noSkills;">{{member.skills}}</p>
+        <div id="skillset" [innerHTML]="member.skills | noSanitize" *ngIf="member.skills; else noSkills;"></div>
         <ng-template #noSkills><p>No content</p></ng-template>
       </tab>
       <tab heading="Photos">

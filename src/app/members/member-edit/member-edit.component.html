@@ -56,13 +56,14 @@
                     class="form-control"
                 ></textarea>
                 <h4 class="mt-2" *ngIf="member.gender != 'employer'">Skills</h4>
-                <textarea
-                    [(ngModel)]="member.skills"
-                    *ngIf="member.gender != 'employer'"  
-                    name="skills" 
-                    rows="6"
-                    class="form-control"
-                ></textarea>
+                <angular-editor
+                [(ngModel)]="member.skills"
+                *ngIf="member.gender != 'employer'"  
+                name="skills" 
+                [placeholder]="'Edit skills here...'"
+                [config]="editorConfig"
+                >
+                </angular-editor>
                 <h4 class="mt-2">Location details: </h4>
                 <div class="form-inline">
                   <label for="city">City: </label>
