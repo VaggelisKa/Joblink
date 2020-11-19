@@ -17,4 +17,6 @@ img {
     margin-right: 5px;
     border-radius: 50%;
     display: inline;
+    cursor: pointer;
+    outline: none;
 }
