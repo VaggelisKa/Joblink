@@ -20,6 +20,7 @@ import { MemberDetailComponent } from './members/member-detail/member-detail.com
 import { MemberEditComponent } from './members/member-edit/member-edit.component';
 import { LoadingInterceptor } from './interceptors/loading.interceptor';
 import { PhotoEditorComponent } from './members/photo-editor/photo-editor.component';
+import { ListsComponent } from './lists/lists.component';
 
 
 
@@ -35,7 +36,8 @@ import { PhotoEditorComponent } from './members/photo-editor/photo-editor.compon
       MemberCardComponent,
       MemberDetailComponent,
       MemberEditComponent,
-      PhotoEditorComponent
+      PhotoEditorComponent,
+      ListsComponent
    ],
    imports: [
       BrowserModule,

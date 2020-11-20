@@ -17,7 +17,7 @@ export class LikesService {
   }
 
   getLikes(predicate: string): Observable<any> {
-    return this._http.get(this.baseUrl + 'likes?=' + predicate);
+    return this._http.get(this.baseUrl + 'likes?predicate=' + predicate);
   }
 
 }

@@ -23,7 +23,12 @@ import { NoSanitizePipe } from './components/pipes/noSanitize.pipe';
 
 
 @NgModule({
-  declarations: [ErrorDisplayComponent, TextInputComponent, DateInputComponent, NoSanitizePipe],
+  declarations: [
+    ErrorDisplayComponent, 
+    TextInputComponent, 
+    DateInputComponent, 
+    NoSanitizePipe,
+  ],
   imports: [
     CommonModule,
     ReactiveFormsModule,
@@ -59,7 +64,7 @@ import { NoSanitizePipe } from './components/pipes/noSanitize.pipe';
     ButtonsModule,
     TimeagoModule,
     AngularEditorModule,
-    NoSanitizePipe
+    NoSanitizePipe,
   ]
 })
 export class SharedModule { }
