@@ -1,7 +1,8 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { PaginationService } from 'src/app/shared/services/pagination.service';
 
 import { environment } from 'src/environments/environment';
 import { Member } from '../../models/member';
@@ -17,7 +18,8 @@ export class MembersService {
   members: Member[] = [];
   memberCache = new Map();
 
-  constructor(private _http: HttpClient) { }
+  constructor(private _http: HttpClient,
+              private _paginationService: PaginationService) { }
 
   getMembers(userParams: UserParams): Observable<PaginatedResult<Member[]>> {
     const response = this.memberCache.get(Object.values(userParams).join('-'));
@@ -35,13 +37,13 @@ export class MembersService {
     } = userParams;
     sessionStorage.setItem('User Params', JSON.stringify(userParams));
 
-    let params = this.getPaginationHeaders(pageNumber, pageSize);
+    let params = this._paginationService.getPaginationHeaders(pageNumber, pageSize);
     params = params.append('minAge', minAge.toString());
     params = params.append('maxAge', maxAge.toString());
     params = params.append('gender', gender);
     params = params.append('orderBy', orderBy);
 
-    return this.getPaginatedResults<Member[]>(this.baseUrl + 'users', params)
+    return this._paginationService.getPaginatedResults<Member[]>(this.baseUrl + 'users', params)
       .pipe(
         map(res => {
           this.memberCache.set(Object.values(userParams).join('-'), res);
@@ -50,31 +52,6 @@ export class MembersService {
       );
   }
 
-  private getPaginationHeaders(pageNumber: number, pageSize: number): HttpParams {
-    let params = new HttpParams();
-    params = params.append('pageNumber', pageNumber.toString());
-    params = params.append('pageSize', pageSize.toString());
-
-    return params;
-  }
-
-  private getPaginatedResults<T>(url: string, params: HttpParams): Observable<PaginatedResult<T>> {
-    const paginatedResult: PaginatedResult<T> = new PaginatedResult<T>();
-
-    return this._http
-      .get<T>(url, {observe: 'response', params})
-      .pipe(
-        map(response => {
-          paginatedResult.result = response.body;
-
-          if (response.headers.get('Pagination')) {
-            paginatedResult.pagination = JSON.parse(response.headers.get('Pagination'));
-          }
-
-          return paginatedResult;
-        })
-      );
-  }
 
   getMemberByUsername(username: string): Observable<Member> {
     const member = [...this.memberCache.values()]
