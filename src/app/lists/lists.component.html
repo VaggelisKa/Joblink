@@ -30,18 +30,8 @@
 <div *ngIf="members?.length <= 0" class="mt-3 text-center">
   <p>{{likeParams.predicate === 'liked' ? 'You have not given a like to any other member' : 'You have not received any likes yet'}}</p>
 </div>
-<div class="d-flex justify-content-center" *ngIf="pagination">
-  <pagination
-    *ngIf="members?.length > 0"
-    [boundaryLinks]="true"
-    [totalItems]="pagination.totalItems"
-    [itemsPerPage]="pagination.itemsPerPage"
-    [(ngModel)]="pagination.currentPage"
-    (pageChanged)="pageChanged($event)"
-    previousText="&lsaquo;"
-    nextText="&rsaquo;"
-    firstText="&laquo;"
-    lastText="&raquo;"
-  >
-  </pagination>
-</div>
+<app-pagination-field
+  [pagination]="pagination"
+  [members]="members"
+  (pageChangedEvent)="pageChanged($event)"
+></app-pagination-field>

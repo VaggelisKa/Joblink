@@ -19,6 +19,7 @@ import { ButtonsModule } from 'ngx-bootstrap/buttons';
 import { TimeagoModule } from 'ngx-timeago';
 import { AngularEditorModule } from '@kolkov/angular-editor';
 import { NoSanitizePipe } from './components/pipes/noSanitize.pipe';
+import { PaginationFieldComponent } from './components/pagination-field/pagination-field.component';
 
 
 
@@ -28,6 +29,7 @@ import { NoSanitizePipe } from './components/pipes/noSanitize.pipe';
     TextInputComponent, 
     DateInputComponent, 
     NoSanitizePipe,
+    PaginationFieldComponent
   ],
   imports: [
     CommonModule,
@@ -65,6 +67,7 @@ import { NoSanitizePipe } from './components/pipes/noSanitize.pipe';
     TimeagoModule,
     AngularEditorModule,
     NoSanitizePipe,
+    PaginationFieldComponent
   ]
 })
 export class SharedModule { }

@@ -64,17 +64,8 @@
     <p><app-member-card [member]="member"></app-member-card></p>
   </div>
 </div>
-<div class="d-flex justify-content-center" *ngIf="pagination">
-  <pagination
-    [boundaryLinks]="true"
-    [totalItems]="pagination.totalItems"
-    [itemsPerPage]="pagination.itemsPerPage"
-    [(ngModel)]="pagination.currentPage"
-    (pageChanged)="pageChanged($event)"
-    previousText="&lsaquo;"
-    nextText="&rsaquo;"
-    firstText="&laquo;"
-    lastText="&raquo;"
-  >
-  </pagination>
-</div>
+<app-pagination-field
+  [pagination]="pagination"
+  [members]="members"
+  (pageChangedEvent)="pageChanged($event)"
+></app-pagination-field>
