@@ -6,6 +6,7 @@ import { User } from '../models/user';
 
 import { environment } from '../../environments/environment';
 import { MembersService } from '../members/services/members.service';
+import { LikesService } from '../members/services/likes.service';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +17,9 @@ export class AuthService {
   private _userSource = new ReplaySubject<User>(1);
   currentUser$ = this._userSource.asObservable();
 
-  constructor(private _http: HttpClient, private _membersService: MembersService) { }
+  constructor(private _http: HttpClient, 
+              private _membersService: MembersService,
+              private _likesService: LikesService) { }
 
   login(model: any): Observable<any> {
     return this._http
@@ -51,7 +54,9 @@ export class AuthService {
   logout(): void {
     localStorage.removeItem('CurrentUser');
     sessionStorage.removeItem('User Params');
-    this._membersService.memberCache.clear();
+
+    this._membersService.memberCache?.clear();
+    this._likesService.likesCache?.clear();
     this._userSource.next(null);
   }
 }

@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { catchError, map } from 'rxjs/operators';
 import { PaginationService } from 'src/app/shared/services/pagination.service';
 
 import { environment } from 'src/environments/environment';
@@ -48,6 +48,10 @@ export class MembersService {
         map(res => {
           this.memberCache.set(Object.values(userParams).join('-'), res);
           return res;
+        }),
+        catchError((error) => {
+          this.memberCache.clear();
+          return of(error);
         })
       );
   }

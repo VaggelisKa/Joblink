@@ -1,6 +1,7 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
+import { catchError, map } from 'rxjs/operators';
 import { LikeParams } from 'src/app/models/likeParams';
 import { Member } from 'src/app/models/member';
 import { PaginatedResult } from 'src/app/models/pagination';
@@ -11,8 +12,8 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class LikesService {
-
   private readonly baseUrl = environment.apiUrl;
+  likesCache = new Map();
   
   constructor(private _http: HttpClient,
               private _paginationService: PaginationService) { }
@@ -28,9 +29,24 @@ export class LikesService {
       pageSize 
     } = likesParams;
 
+    const response = this.likesCache.get(Object.values(likesParams).join('-'));
+    if (response) {
+      return of(response);
+    }
+
     const params = this._paginationService.getPaginationHeaders(pageNumber, pageSize);
 
-    return this._paginationService.getPaginatedResults<Member[]>(this.baseUrl + `likes?predicate=${predicate}`, params);
+    return this._paginationService.getPaginatedResults<Member[]>(this.baseUrl + `likes?predicate=${predicate}`, params)
+      .pipe(
+        map(res => {
+          this.likesCache.set(Object.values(likesParams).join('-'), res);
+          return res;
+        }),
+        catchError((error) => {
+          this.likesCache.clear();
+          return of(error);
+        })
+      );
   }
 
 }
