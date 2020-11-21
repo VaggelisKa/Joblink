@@ -57,11 +57,11 @@
                 ></textarea>
                 <h4 class="mt-2" *ngIf="member.gender != 'employer'">Skills</h4>
                 <angular-editor
-                [(ngModel)]="member.skills"
-                *ngIf="member.gender != 'employer'"  
-                name="skills" 
-                [placeholder]="'Edit skills here...'"
-                [config]="editorConfig"
+                  [(ngModel)]="member.skills"
+                  *ngIf="member.gender != 'employer'"  
+                  name="skills" 
+                  [placeholder]="'Edit skills here...'"
+                  [config]="editorConfig"
                 >
                 </angular-editor>
                 <h4 class="mt-2">Location details: </h4>
