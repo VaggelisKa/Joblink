@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { NgxGalleryAnimation, NgxGalleryImage, NgxGalleryOptions } from '@kolkov/ngx-gallery';
+import { AllHtmlEntities } from 'html-entities';
 import { Member } from 'src/app/models/member';
 import { MembersService } from '../services/members.service';
 
@@ -50,6 +51,7 @@ export class MemberDetailComponent implements OnInit {
     this._membersService.getMemberByUsername(this._route.snapshot.paramMap.get('username'))
       .subscribe(member => {
         this.member = member;
+        this.member.skills = AllHtmlEntities.decode(member.skills);
         this.galleryImages = this.getMemberImages();
       });
   }

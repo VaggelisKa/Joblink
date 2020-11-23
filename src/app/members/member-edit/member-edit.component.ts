@@ -9,6 +9,7 @@ import { AuthService } from 'src/app/auth/auth.service';
 import { Member } from 'src/app/models/member';
 import { User } from 'src/app/models/user';
 import { MembersService } from '../services/members.service';
+import { AllHtmlEntities } from 'html-entities';
 
 @Component({
   selector: 'app-member-edit',
@@ -81,6 +82,9 @@ export class MemberEditComponent implements OnInit {
   }
 
   updateMember(): void {
+    const encodedSkills = AllHtmlEntities.encode(this.member.skills);
+    this.member.skills = encodedSkills;
+
     this._membersService.updateMemberProfile(this.member).subscribe((_) => {
       this._toastr.success('Your profile was successfully updated!');
       this.editForm.reset(this.member);
