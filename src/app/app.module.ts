@@ -13,6 +13,7 @@ import { TokenInterceptor } from './interceptors/token.interceptor';
 import { LoadingInterceptor } from './interceptors/loading.interceptor';
 import { AuthModule } from './auth/auth.module';
 import { MembersModule } from './members/members.module';
+import { MessageModule } from './messages/message.module';
 
 
 
@@ -29,7 +30,8 @@ import { MembersModule } from './members/members.module';
       BrowserAnimationsModule,
       SharedModule,
       MembersModule,
-      AuthModule
+      AuthModule,
+      MessageModule
    ],
    providers: [
       {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},
