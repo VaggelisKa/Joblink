@@ -12,9 +12,10 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { DateInputComponent } from './components/forms/date-input/date-input.component';
 import { PaginationModule } from 'ngx-bootstrap/pagination';
 import { ButtonsModule } from 'ngx-bootstrap/buttons';
-import { NoSanitizePipe } from './components/pipes/noSanitize.pipe';
 import { PaginationFieldComponent } from './components/pagination-field/pagination-field.component';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { DropdownFilterComponent } from './components/dropdown-filter/dropdown-filter.component';
+import { NoSanitizePipe } from './pipes/noSanitize.pipe';
 
 
 
@@ -24,7 +25,8 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
     TextInputComponent, 
     DateInputComponent, 
     NoSanitizePipe,
-    PaginationFieldComponent
+    PaginationFieldComponent,
+    DropdownFilterComponent
   ],
   imports: [
     CommonModule,
@@ -53,7 +55,8 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
     PaginationModule,
     ButtonsModule,
     NoSanitizePipe,
-    PaginationFieldComponent
+    PaginationFieldComponent,
+    DropdownFilterComponent
   ]
 })
 export class SharedModule { }

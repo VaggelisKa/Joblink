@@ -64,4 +64,11 @@ export class MemberListComponent implements OnInit {
     this.loadMembers();
   }
 
+  filterClicked(event: string): void {
+    if (event) {
+      this.userParams.orderBy = event;
+      this.loadMembers();
+    }
+  }
+
 }

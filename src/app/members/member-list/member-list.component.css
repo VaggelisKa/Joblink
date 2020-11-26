@@ -8,18 +8,6 @@ input[type=number] {
     -moz-appearance:textfield;
 }
 
-.dropdown-toggle, .dropdown-item {
-    cursor: pointer;
-}
-
-.dropdown-item {
-    text-transform: capitalize;
-}
-
-.dropdown-toggle {
-    text-decoration: none;
-}
-
 button:focus { 
     outline: none !important; 
     box-shadow: none !important; 

@@ -36,29 +36,14 @@
     <button (click)="resetFilters()" class="btn-sm btn-info ml-1" type="submit">Reset Filters</button>
   </form>
 </div>
-<div class="dropdown d-flex flex-row mb-3" dropdown>
-  <a class="dropdown-toggle" dropdownToggle>Sort By</a>
-  <div class="dropdown-menu mt-2" *dropdownMenu>
-    <button 
-      class="btn dropdown-item" 
-      btnRadio="lastActive" 
-      name="orderBy" 
-      type="button" 
-      (click)="loadMembers()" 
-      [(ngModel)]="userParams.orderBy"
-    >Last Active
-    </button>
-    <button 
-      class="btn dropdown-item" 
-      btnRadio="created" 
-      name="orderBy" 
-      type="button" 
-      (click)="loadMembers()" 
-      [(ngModel)]="userParams.orderBy"
-    >Created Date
-    </button>
-  </div>
-</div>
+<app-dropdown-filter
+  [params]="userParams.orderBy"
+  (filterClicked)="filterClicked($event)"
+  [btn1RadioName]="'lastActive'"
+  [btn2RadioName]="'created'"
+  [field1Name]="'Last Active'"
+  [field2Name]="'Created Date'"
+></app-dropdown-filter>
 <div class="row">
   <div *ngFor="let member of members" class="col-2">
     <p><app-member-card [member]="member"></app-member-card></p>

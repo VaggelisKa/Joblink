@@ -1,27 +1,14 @@
 <div class="text-center">
   <h2 class="">{{likeParams.predicate === 'liked' ? 'Members you like' : 'Member who like you'}}</h2>
 </div>
-<div class="dropdown d-flex flex-row mb-3 mt-5" dropdown>
-  <a class="dropdown-toggle" dropdownToggle>Filter By</a>
-  <div class="dropdown-menu mt-2" *dropdownMenu>
-    <button 
-      class="btn dropdown-item" 
-      btnRadio="liked" 
-      type="button" 
-      (click)="loadLikes()" 
-      [(ngModel)]="likeParams.predicate"
-    >Members i like
-    </button>
-    <button 
-      class="btn dropdown-item" 
-      btnRadio="likedBy"  
-      type="button" 
-      (click)="loadLikes()" 
-      [(ngModel)]="likeParams.predicate"
-    >Members who like me
-    </button>
-  </div>
-</div>
+<app-dropdown-filter
+  [params]="likeParams.predicate"
+  (filterClicked)="filterClicked($event)"
+  [btn1RadioName]="'liked'"
+  [btn2RadioName]="'likedBy'"
+  [field1Name]="'Members i like'"
+  [field2Name]="'Members who like me'"
+></app-dropdown-filter>
 <div class="row mt-3">
   <div class="col-2" *ngFor="let member of members">
     <app-member-card [member]="member" *ngIf="members?.length > 0"></app-member-card>

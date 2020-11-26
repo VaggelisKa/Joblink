@@ -33,4 +33,11 @@ export class ListsComponent implements OnInit {
     this.loadLikes();
   }
 
+  filterClicked(event: string) {
+    if (event) {
+      this.likeParams.predicate = event;
+      this.loadLikes();
+    }
+  }
+
 }

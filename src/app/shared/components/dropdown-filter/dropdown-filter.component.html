@@ -1,0 +1,21 @@
+<div class="dropdown d-flex flex-row mb-3 mt-5" dropdown>
+  <a class="dropdown-toggle" dropdownToggle>Filter By</a>
+  <div class="dropdown-menu mt-2" *dropdownMenu>
+    <button 
+      class="btn dropdown-item" 
+      btnRadio="{{btn1RadioName}}" 
+      type="button" 
+      (click)="onClick($event)" 
+      [(ngModel)]="params"
+    > {{ field1Name }}
+    </button>
+    <button 
+      class="btn dropdown-item" 
+      btnRadio="{{btn2RadioName}}"  
+      type="button"
+      (click)="onClick($event)" 
+      [(ngModel)]="params"
+    >{{ field2Name }}
+    </button>
+  </div>
+</div>
