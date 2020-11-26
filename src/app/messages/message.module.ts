@@ -1,4 +1,6 @@
 import { NgModule } from '@angular/core';
+import { RouterModule } from '@angular/router';
+import { TimeagoModule } from 'ngx-timeago';
 import { SharedModule } from '../shared/shared.module';
 import { MessagesComponent } from './messages/messages.component';
 
@@ -7,7 +9,9 @@ import { MessagesComponent } from './messages/messages.component';
         MessagesComponent
     ],
     imports: [
-        SharedModule
+        SharedModule,
+        RouterModule,
+        TimeagoModule.forRoot(),
     ]
 })
 export class MessageModule {}

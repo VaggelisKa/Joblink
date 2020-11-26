@@ -2,6 +2,7 @@
   <h2 class="">{{likeParams.predicate === 'liked' ? 'Members you like' : 'Member who like you'}}</h2>
 </div>
 <app-dropdown-filter
+  [dropdownName]="'Filter By'"
   [params]="likeParams.predicate"
   (filterClicked)="filterClicked($event)"
   [btn1RadioName]="'liked'"

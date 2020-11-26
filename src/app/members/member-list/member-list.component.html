@@ -37,6 +37,7 @@
   </form>
 </div>
 <app-dropdown-filter
+  [dropdownName]="'Sort By'"
   [params]="userParams.orderBy"
   (filterClicked)="filterClicked($event)"
   [btn1RadioName]="'lastActive'"

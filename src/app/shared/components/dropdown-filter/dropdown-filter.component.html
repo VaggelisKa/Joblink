@@ -1,5 +1,5 @@
 <div class="dropdown d-flex flex-row mb-3 mt-5" dropdown>
-  <a class="dropdown-toggle" dropdownToggle>Filter By</a>
+  <a class="dropdown-toggle" dropdownToggle>{{dropdownName}}</a>
   <div class="dropdown-menu mt-2" *dropdownMenu>
     <button 
       class="btn dropdown-item" 
@@ -17,5 +17,14 @@
       [(ngModel)]="params"
     >{{ field2Name }}
     </button>
+    <button
+    *ngIf="btn3RadioName && field3Name" 
+    class="btn dropdown-item" 
+    btnRadio="{{btn3RadioName}}"  
+    type="button"
+    (click)="onClick()" 
+    [(ngModel)]="params"
+  >{{ field3Name }}
+  </button>
   </div>
 </div>

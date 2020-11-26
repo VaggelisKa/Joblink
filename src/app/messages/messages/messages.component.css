@@ -1,0 +1,19 @@
+.img-circle {
+    max-height: 50px
+}
+
+th {
+    font-weight: bold;
+    color: black;
+}
+
+#delete-button {
+    border: none;
+    background-color: inherit;
+    cursor: pointer;
+}
+
+#delete-button:hover {
+    border: none;
+    cursor: pointer;
+}

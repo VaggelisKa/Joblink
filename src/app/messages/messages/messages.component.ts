@@ -36,4 +36,11 @@ export class MessagesComponent implements OnInit {
     this.pageNumber = event.page;
     this.loadMessages();
   }
+
+  filterClicked(event: string) {
+    if (event) {
+      this.container = event;
+      this.loadMessages();
+    }
+  }
 }
