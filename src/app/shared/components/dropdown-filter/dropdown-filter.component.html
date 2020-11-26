@@ -5,7 +5,7 @@
       class="btn dropdown-item" 
       btnRadio="{{btn1RadioName}}" 
       type="button" 
-      (click)="onClick($event)" 
+      (click)="onClick()" 
       [(ngModel)]="params"
     > {{ field1Name }}
     </button>
@@ -13,7 +13,7 @@
       class="btn dropdown-item" 
       btnRadio="{{btn2RadioName}}"  
       type="button"
-      (click)="onClick($event)" 
+      (click)="onClick()" 
       [(ngModel)]="params"
     >{{ field2Name }}
     </button>
