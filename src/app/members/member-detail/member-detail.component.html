@@ -58,7 +58,7 @@
         <p *ngIf="galleryImages.length <= 0"> This user hasn't uploaded any photos yet</p>
       </tab>
       <tab heading="Messages">
-        <p>Messages here</p>
+        <app-member-messages [username]="member.username"></app-member-messages>
       </tab>
     </tabset>
   </div>

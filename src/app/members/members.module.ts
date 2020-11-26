@@ -12,6 +12,7 @@ import { NgxGalleryModule } from '@kolkov/ngx-gallery';
 import { FileUploadModule } from 'ng2-file-upload';
 import { SharedModule } from '../shared/shared.module';
 import { RouterModule } from '@angular/router';
+import { MemberMessagesComponent } from './member-messages/member-messages.component';
 
 
 @NgModule({
@@ -21,6 +22,7 @@ import { RouterModule } from '@angular/router';
         MemberEditComponent,
         PhotoEditorComponent,
         MemberCardComponent,
+        MemberMessagesComponent
     ],
     imports: [
         RouterModule,
@@ -29,7 +31,8 @@ import { RouterModule } from '@angular/router';
         TimeagoModule.forRoot(),
         NgxGalleryModule,
         FileUploadModule,
-        SharedModule
+        SharedModule,
+        
     ],
     exports: [
         MemberCardComponent,

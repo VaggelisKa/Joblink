@@ -12,7 +12,9 @@ import { PaginationService } from '../shared/services/pagination.service';
 export class MessageService {
   private readonly baseUrl = environment.apiUrl + 'messages';
 
-  constructor(private _paginationService: PaginationService) { }
+  constructor(
+    private _paginationService: PaginationService,
+    private _http: HttpClient) { }
 
   getMessages(pageNumber: number, pageSize: number, container: string): Observable<PaginatedResult<Message[]>> {
     let params = this._paginationService.getPaginationHeaders(pageNumber, pageSize);
@@ -20,5 +22,10 @@ export class MessageService {
 
     return this._paginationService.getPaginatedResults<Message[]>(this.baseUrl, params);
   }
+
+  getMessageThread(username: string): Observable<Message[]> {
+    return this._http.get<Message[]>(this.baseUrl + '/thread/' + username);
+  }
+
 
 }
