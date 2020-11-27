@@ -27,7 +27,9 @@
         container === 'Outbox' 
         ? '/members/' + message.recipientUsername 
         : '/members/' + message.senderUsername
-      }}">
+      }}"
+      [queryParams]="{tab: 1}"
+      >
       <td>{{message.content}}</td>
       <td>
         <div *ngIf="container === 'Outbox'">

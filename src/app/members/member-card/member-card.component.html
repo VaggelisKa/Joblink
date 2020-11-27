@@ -13,7 +13,11 @@
                 </button>
             </li>
             <li class="list-inline-item">
-                <button class="btn btn-primary btn-sm">
+                <button 
+                    class="btn btn-primary btn-sm" 
+                    routerLink="/members/{{member.username}}"
+                    [queryParams]="{tab: 1}"
+                >
                     <i class="fa fa-comment"></i>
                 </button>
             </li>
@@ -29,6 +33,5 @@
             {{member.username}}
         </h6>
         <p class="card-text text-center">From {{member.city}}</p>
-        <!-- <p class="card-text text-center">{{member.skills}}</p> -->
     </div>
 </div>

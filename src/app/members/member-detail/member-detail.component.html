@@ -1,4 +1,4 @@
-<div class="row" *ngIf="member">
+<div class="row">
   <div class="col-4">
     <div class="card">
       <img 
@@ -27,7 +27,7 @@
       <div class="card-footer">
         <div class="btn-group d-flex">
           <button class="btn btn-primary mr-2">Like</button>
-          <button class="btn btn-success">Message</button>
+          <button class="btn btn-success" (click)="selectMessagesTab(1)">Message</button>
         </div>
       </div>
     </div>
@@ -58,7 +58,7 @@
         <p *ngIf="galleryImages.length <= 0"> This user hasn't uploaded any photos yet</p>
       </tab>
       <tab heading="Messages" (selectTab)="onTabActivated($event)">
-        <app-member-messages [messages]="messages"></app-member-messages>
+        <app-member-messages [messages]="messages" [username]="member.username"></app-member-messages>
       </tab>
     </tabset>
   </div>

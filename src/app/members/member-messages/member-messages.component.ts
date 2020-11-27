@@ -8,6 +8,7 @@ import { Message } from 'src/app/models/message';
 })
 export class MemberMessagesComponent implements OnInit {
   @Input() messages: Message[];
+  @Input() username: string;
   
   constructor() { }
 
