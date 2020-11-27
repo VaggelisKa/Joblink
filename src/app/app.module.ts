@@ -36,7 +36,7 @@ import { MessageModule } from './messages/message.module';
    providers: [
       {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},
       {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true},
-      {provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true}
+      {provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true},
    ],
    bootstrap: [
       AppComponent

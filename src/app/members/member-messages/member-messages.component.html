@@ -1,3 +1,37 @@
-<p *ngFor="let message of messages">
-  {{message?.content}}
-</p>
+<div class="card">
+  <div class="card-body">
+    <div *ngIf="messages?.length <= 0">
+      Say hi by using the message box below  
+    </div>
+    <ul *ngIf="messages?.length > 0" class="chat">
+      <li *ngFor="let message of messages">
+        <div>
+          <span class="chat-img float-right">
+            <img class="rounded-circle" src="{{message.sendPhotoUrl || './assets/user.png'}}" alt="{{message.senderUsername}}">
+          </span>
+          <p>{{message.content}}</p>
+          <div class="chat-body">
+            <small class="text-muted">
+              <span class="text-danger" *ngIf="!message.dateRead && message.senderUsername != username">
+                (unread <i class="fa fa-book"></i>)
+              </span>
+              <span class="text-muted" *ngIf="message.dateRead && message.senderUsername != username">
+                (read <i class="fas fa-book-open"></i>) {{message.dateSent | timeago}}
+              </span>
+            </small>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div class="card-footer">
+    <form>
+      <div class="input-group">
+        <input type="text" class="form-control input-sm" placeholder="Send a private message">
+        <div class="input-group-append">
+          <button class="btn btn-primary" type="submit">Send</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
