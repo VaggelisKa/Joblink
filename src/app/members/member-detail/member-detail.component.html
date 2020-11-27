@@ -33,21 +33,21 @@
     </div>
   </div>
   <div class="col-8">
-    <tabset class="member-tabset">
-      <tab heading="About" *ngIf="member.bio || member.lookingFor">
+    <tabset class="member-tabset" #memberTabset>
+      <tab heading="About" *ngIf="member.bio || member.lookingFor" (selectTab)="onTabActivated($event)">
         <h4>Description</h4>
         <p>{{member.bio}}</p>
         <h4>Looking for</h4>
         <p>{{member.lookingFor}}</p>
       </tab>
-      <tab heading="About" *ngIf="!member.bio && !member.lookingFor">
+      <tab heading="About" *ngIf="!member.bio && !member.lookingFor" (selectTab)="onTabActivated($event)">
         <p>No content</p>
       </tab>
-      <tab heading="Skills" *ngIf="member.gender != 'employer'">
+      <tab heading="Skills" *ngIf="member.gender != 'employer'" (selectTab)="onTabActivated($event)">
         <div id="skillset" [innerHTML]="member.skills | noSanitize" *ngIf="member.skills; else noSkills;"></div>
         <ng-template #noSkills><p>No content</p></ng-template>
       </tab>
-      <tab heading="Photos">
+      <tab heading="Photos" (selectTab)="onTabActivated($event)">
         <ngx-gallery 
           [options]="galleryOptions" 
           [images]="galleryImages"
@@ -57,8 +57,8 @@
         </ngx-gallery>
         <p *ngIf="galleryImages.length <= 0"> This user hasn't uploaded any photos yet</p>
       </tab>
-      <tab heading="Messages">
-        <app-member-messages [username]="member.username"></app-member-messages>
+      <tab heading="Messages" (selectTab)="onTabActivated($event)">
+        <app-member-messages [messages]="messages"></app-member-messages>
       </tab>
     </tabset>
   </div>
