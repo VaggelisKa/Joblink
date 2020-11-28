@@ -1,6 +1,9 @@
+<div class="text-center">
+  <h2>Check your messages</h2>
+</div>
 <app-dropdown-filter
-  class="mb-7"
-  [dropdownName]="'Messages'"
+  class="px-1"
+  [dropdownName]="container"
   [params]="container"
   (filterClicked)="filterClicked($event)"
   [btn1RadioName]="'Unread'"
@@ -10,7 +13,7 @@
   [field2Name]="'Inbox'"
   [field3Name]="'Outbox'"
 ></app-dropdown-filter>
-<div class="row mt-3 text-center" *ngIf="messages?.length <= 0">
+<div class="row mt-3 d-flex justify-content-center" *ngIf="messages?.length <= 0">
   <p>No messages</p>
 </div>
 <div class="row" *ngIf="messages?.length > 0">

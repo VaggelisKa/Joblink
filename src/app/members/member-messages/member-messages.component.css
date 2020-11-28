@@ -19,6 +19,10 @@
     max-height: 50px;
 }
 
-input {
-    border: none;
+
+input:focus {
+    outline:none! important;
+    border: 0;
+    outline: 0;
+    box-shadow: none;
 }
