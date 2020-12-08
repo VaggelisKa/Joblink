@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, ReplaySubject, Subject } from 'rxjs';
+import { Observable, ReplaySubject } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { User } from '../models/user';
 
@@ -46,7 +46,12 @@ export class AuthService {
       );
   }
 
-  setCurrentUser(user): void {
+  setCurrentUser(user: User): void {
+    user.roles = [];
+
+    const roles = this.getDecodedToken(user.token).role;
+    Array.isArray(roles) ? user.roles = roles : user.roles.push(roles);
+
     this._userSource.next(user);
     localStorage.setItem('CurrentUser', JSON.stringify(user));
   }
@@ -58,5 +63,9 @@ export class AuthService {
     this._membersService.memberCache?.clear();
     this._likesService.likesCache?.clear();
     this._userSource.next(null);
+  }
+
+  getDecodedToken(token: string): any {
+    return JSON.parse(atob(token.split('.')[1]));
   }
 }

@@ -1,6 +1,6 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ToastrService } from 'ngx-toastr';
 import { Observable } from 'rxjs';
 import { User } from '../../../models/user';
 
@@ -12,13 +12,14 @@ import { AuthService } from '../../auth.service';
   styleUrls: ['./nav.component.css']
 })
 export class NavComponent implements OnInit {
+  @ViewChild('loginForm') loginForm: NgForm;
+
   model: any = {};
   currentUser$: Observable<User>;
   username = '';
 
   constructor(private _authService: AuthService,
-              private _router: Router,
-              private _toastr: ToastrService) { }
+              private _router: Router) { }
 
   ngOnInit() {
     this.currentUser$ = this._authService.currentUser$;
@@ -27,6 +28,7 @@ export class NavComponent implements OnInit {
   onLogin(): void {
     this._authService.login(this.model).subscribe((_) => {
       this._router.navigateByUrl('/members');
+      this.loginForm.resetForm();
     });
   }
 
