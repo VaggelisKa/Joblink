@@ -5,14 +5,16 @@ import { RouterModule } from '@angular/router';
 import { SharedModule } from '../shared/shared.module';
 import { NavComponent } from './components/nav/nav.component';
 import { RegisterComponent } from './components/register/register.component';
+import { HasRoleDirective } from './has-role.directive';
 
 
 
 @NgModule({
-    declarations: [
+    declarations: [	
         NavComponent,
-        RegisterComponent
-    ],
+        RegisterComponent,
+        HasRoleDirective
+   ],
     imports: [
         ReactiveFormsModule,
         SharedModule,
