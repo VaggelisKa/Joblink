@@ -26,7 +26,7 @@ import { NoSanitizePipe } from './pipes/noSanitize.pipe';
     DateInputComponent, 
     NoSanitizePipe,
     PaginationFieldComponent,
-    DropdownFilterComponent
+    DropdownFilterComponent,
   ],
   imports: [
     CommonModule,

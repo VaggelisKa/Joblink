@@ -14,6 +14,7 @@ import { LoadingInterceptor } from './interceptors/loading.interceptor';
 import { AuthModule } from './auth/auth.module';
 import { MembersModule } from './members/members.module';
 import { MessageModule } from './messages/message.module';
+import { AdminModule } from './admin/admin.module';
 
 
 
