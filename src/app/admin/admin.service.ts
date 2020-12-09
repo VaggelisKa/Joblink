@@ -16,4 +16,9 @@ export class AdminService {
     return this._http.get<Partial<User[]>>(this.baseUrl + '/users-with-roles');
   }
 
+  updateUserRoles(username: string, roles: string | string[] ): Observable<any> {
+    const url = this.baseUrl + '/edit-roles/' + username + '?roles=' + roles;
+    return this._http.post(url, {});
+  }
+
 }
