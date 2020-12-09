@@ -16,7 +16,7 @@ import { PaginationFieldComponent } from './components/pagination-field/paginati
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { DropdownFilterComponent } from './components/dropdown-filter/dropdown-filter.component';
 import { NoSanitizePipe } from './pipes/noSanitize.pipe';
-
+import { ModalsModule } from './modals/modals.module';
 
 
 @NgModule({
@@ -41,6 +41,7 @@ import { NoSanitizePipe } from './pipes/noSanitize.pipe';
     BsDatepickerModule.forRoot(),
     PaginationModule.forRoot(),
     ButtonsModule.forRoot(),
+    ModalsModule
   ],
   exports: [
     CommonModule,
@@ -56,7 +57,8 @@ import { NoSanitizePipe } from './pipes/noSanitize.pipe';
     ButtonsModule,
     NoSanitizePipe,
     PaginationFieldComponent,
-    DropdownFilterComponent
+    DropdownFilterComponent,
+    ModalsModule
   ]
 })
 export class SharedModule { }
