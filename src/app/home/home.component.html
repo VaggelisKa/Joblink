@@ -1,5 +1,5 @@
-<div class="container mt-5">
-  <div style="text-align: center;" *ngIf="!registerMode">
+<div class="container">
+  <div style="text-align: center;" class="mt-5" *ngIf="!registerMode">
     <h1>Find your match</h1>
     <p class="lead">View your matches.. Just sign up first!</p>
     <div class="text-center">
@@ -7,12 +7,46 @@
       <button class="btn btn-info btn-lg mr-2" style="padding: 1.2rem;">Learn More</button>
     </div>
   </div>
-
   <div class="container" *ngIf="registerMode">
     <div class="row justify-content-center">
       <div class="col-4">
         <app-register (cancelRegistration)="registerToggle()"></app-register>
       </div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="background-image">
+    <img class="svg-image" src="./assets/background.svg" alt="Background image">
+  </div>
+</div>
+<div class="container">
+  <div class="hire-section">
+    <div class="title text-center">
+      <h2>Hire</h2>
+    </div>
+    <div class="hire-svgs">
+      <img src="./assets/blue-container.svg" alt="Background image">
+      <div class="svg-text1">
+        <h6>Join Today</h6>
+        <p class="lorem-text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsa, pariatur quod. Assumenda aliquid laboriosam sapiente eligendi quo libero, doloribus dolorum soluta fugit natus, voluptates similique facere explicabo perferendis totam blanditiis. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Animi veniam non voluptas error, expedita ex voluptate modi, id, qui quae aliquam facilis. Commodi repellat perferendis dignissimos itaque qui error necessitatibus! Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid sed nemo illo incidunt, obcaecati ut numquam blanditiis nesciunt corporis tempore, placeat, natus nulla quis. Placeat possimus deleniti enim dolorem assumenda? Lorem, ipsum dolor sit amet consectetur adipisicing elit. Deserunt assumenda atque quidem nulla fugit delectus nihil magni iure nesciunt maiores reiciendis, doloremque non repellat quasi inventore animi? Obca</p>
+      </div>
+      <img src="./assets/hire-image.svg" alt="Background image">
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="get-hired-section">
+    <div class="title2 text-center">
+      <h2>Get hired</h2>
+    </div>
+    <div class="get-hired-svgs">
+      <img src="./assets/get-hired-image.svg" alt="Background image">
+      <div class="svg-text2">
+        <h6>Join Today</h6>
+        <p class="lorem-text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsa, pariatur quod. Assumenda aliquid laboriosam sapiente eligendi quo libero, doloribus dolorum soluta fugit natus, voluptates similique facere explicabo perferendis totam blanditiis. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Animi veniam non voluptas error, expedita ex voluptate modi, id, qui quae aliquam facilis. Commodi repellat perferendis dignissimos itaque qui error necessitatibus! Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid sed nemo illo incidunt, obcaecati ut numquam blanditiis nesciunt corporis tempore, placeat, natus nulla quis. Placeat possimus deleniti enim dolorem assumenda? Lorem, ipsum dolor sit amet consectetur adipisicing elit. Deserunt assumenda atque quidem nulla fugit delectus nihil magni iure nesciunt maiores reiciendis, doloremque non repellat quasi inventore animi? Obca</p>
+      </div>
+      <img src="./assets/orange-container.svg" alt="Background image">
     </div>
   </div>
 </div>

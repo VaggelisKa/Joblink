@@ -1,0 +1,51 @@
+.background-image {
+    margin-top: 190px;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.svg-image {
+    width: 100%;
+}
+
+
+.hire-section, .get-hired-section {
+    position: relative;
+    margin-top: 150px;
+}
+
+.hire-svgs, .get-hired-svgs {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+
+.hire-svgs img, .get-hired-svgs img {
+    max-width: 100%;
+}
+
+.svg-text1 {
+    position: absolute;
+    top: 50%;
+    left: 35%;
+    transform: translate(-50%, -50%);
+}
+
+.svg-text2 {
+    position: absolute;
+    top: 60%;
+    left: 95%;
+    transform: translate(-50%, -50%);
+    display: inline;
+    width: 50%;
+}
+
+h6, .lorem-text {
+    color: white;
+}
+
+.title2 {
+    margin-bottom: 100px;
+}
