@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HubConnection, HubConnectionBuilder } from '@microsoft/signalr';
 import { ToastrService } from 'ngx-toastr';
+import { BehaviorSubject } from 'rxjs';
 import { User } from 'src/app/models/user';
 import { environment } from 'src/environments/environment';
 
@@ -10,6 +11,8 @@ import { environment } from 'src/environments/environment';
 export class PresenceService {
   private readonly hubUrl = environment.hubUrl;
   private hubConnection: HubConnection;
+  private _onlineUsersSource = new BehaviorSubject<string[]>([]);
+  onlineUsers$ = this._onlineUsersSource.asObservable();
 
   constructor(private _toastr: ToastrService) { }
 
@@ -31,6 +34,10 @@ export class PresenceService {
 
     this.hubConnection.on('UserIsOffline', username => {
       this._toastr.warning(username + ' has disconnected');
+    });
+
+    this.hubConnection.on('GetOnlineUsers', (usernames: string[]) => {
+      this._onlineUsersSource.next(usernames);
     });
   }
 

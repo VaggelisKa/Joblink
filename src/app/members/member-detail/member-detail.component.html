@@ -7,6 +7,9 @@
         class="card-img-top img-thumbnail"
       >
       <div class="card-body text-center">
+        <div class="mb-2" *ngIf="(_presenceService.onlineUsers$ | async).includes(member.username)">
+          <i class="fa fa-user-circle text-success">Online</i>
+        </div>
         <div>
           <strong>Location: </strong>
           <p>{{member.city}}</p>

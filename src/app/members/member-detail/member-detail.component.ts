@@ -4,6 +4,7 @@ import { NgxGalleryAnimation, NgxGalleryImage, NgxGalleryOptions } from '@kolkov
 import { AllHtmlEntities } from 'html-entities';
 import { TabDirective, TabsetComponent } from 'ngx-bootstrap/tabs';
 import { MessageService } from 'src/app/messages/services/message.service';
+import { PresenceService } from 'src/app/messages/services/Presence.service';
 import { Member } from 'src/app/models/member';
 import { Message } from 'src/app/models/message';
 
@@ -23,7 +24,8 @@ export class MemberDetailComponent implements OnInit {
   skillsTextConvertion: string;
 
   constructor(private _route: ActivatedRoute,
-              private _messageService: MessageService) { }
+              private _messageService: MessageService,
+              public _presenceService: PresenceService) { }
 
   ngOnInit() {
     this._route.data.subscribe(data => {

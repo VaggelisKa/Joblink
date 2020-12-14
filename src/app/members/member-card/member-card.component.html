@@ -25,7 +25,9 @@
     </div>
     <div class="card-body p-1">
         <h6 class="card-title text-center mb-1" *ngIf="member.gender === 'employee'">
-            <i class="fa fa-user"></i>
+            <span [class.is-online]="(_presenceService.onlineUsers$ | async).includes(member.username)">
+                <i class="fa fa-user"></i>
+            </span>
             {{member.username}}, {{member.age}}
         </h6>
         <h6 class="card-title text-center mb-1" *ngIf="member.gender !== 'employee'">
