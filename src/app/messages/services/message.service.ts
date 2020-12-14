@@ -2,9 +2,9 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { Message } from '../models/message';
-import { PaginatedResult } from '../models/pagination';
-import { PaginationService } from '../shared/services/pagination.service';
+import { Message } from '../../models/message';
+import { PaginatedResult } from '../../models/pagination';
+import { PaginationService } from '../../shared/services/pagination.service';
 
 @Injectable({
   providedIn: 'root'

@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { NgxGalleryAnimation, NgxGalleryImage, NgxGalleryOptions } from '@kolkov/ngx-gallery';
 import { AllHtmlEntities } from 'html-entities';
 import { TabDirective, TabsetComponent } from 'ngx-bootstrap/tabs';
-import { MessageService } from 'src/app/messages/message.service';
+import { MessageService } from 'src/app/messages/services/message.service';
 import { Member } from 'src/app/models/member';
 import { Message } from 'src/app/models/message';
 

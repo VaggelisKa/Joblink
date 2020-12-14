@@ -7,6 +7,7 @@ import { User } from '../models/user';
 import { environment } from '../../environments/environment';
 import { MembersService } from '../members/services/members.service';
 import { LikesService } from '../members/services/likes.service';
+import { PresenceService } from '../messages/services/Presence.service';
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +20,8 @@ export class AuthService {
 
   constructor(private _http: HttpClient, 
               private _membersService: MembersService,
-              private _likesService: LikesService) { }
+              private _likesService: LikesService,
+              private _presenceService: PresenceService) { }
 
   login(model: any): Observable<any> {
     return this._http
@@ -29,6 +31,7 @@ export class AuthService {
           const user = response;
           if (user) {
             this.setCurrentUser(user);
+            this._presenceService.createHubConnection(user);
           }
         })
       );
@@ -41,6 +44,7 @@ export class AuthService {
         map((user: User) => {
           if (user) {
             this.setCurrentUser(user);
+            this._presenceService.createHubConnection(user);
           }
         })
       );
@@ -63,6 +67,7 @@ export class AuthService {
     this._membersService.memberCache?.clear();
     this._likesService.likesCache?.clear();
     this._userSource.next(null);
+    this._presenceService.stopHubConnection();
   }
 
   getDecodedToken(token: string): any {

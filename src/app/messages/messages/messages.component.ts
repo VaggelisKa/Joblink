@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { Message } from 'src/app/models/message';
 import { Pagination } from 'src/app/models/pagination';
-import { MessageService } from '../message.service';
+import { MessageService } from '../services/message.service';
 
 @Component({
   selector: 'app-messages',

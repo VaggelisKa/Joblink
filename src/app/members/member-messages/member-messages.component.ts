@@ -1,6 +1,6 @@
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { MessageService } from 'src/app/messages/message.service';
+import { MessageService } from 'src/app/messages/services/message.service';
 import { Message } from 'src/app/models/message';
 
 @Component({
