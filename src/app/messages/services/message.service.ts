@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { HubConnection, HubConnectionBuilder } from '@microsoft/signalr';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { map, take } from 'rxjs/operators';
 import { User } from 'src/app/models/user';
 import { environment } from 'src/environments/environment';
 import { Message } from '../../models/message';
@@ -17,7 +18,7 @@ export class MessageService {
 
   private hubConnection: HubConnection;
   private _messageThreadSource = new BehaviorSubject<Message[]>([]);
-  private messageThread$ = this._messageThreadSource.asObservable();
+  messageThread$ = this._messageThreadSource.asObservable();
 
   constructor(
     private _paginationService: PaginationService,
@@ -38,10 +39,21 @@ export class MessageService {
     this.hubConnection.on('ReceiveMessageThread', messages => {
       this._messageThreadSource.next(messages);
     });
+
+    this.hubConnection.on('NewMessage', message => {
+      this.messageThread$.pipe(
+        take(1),
+        map(messages => {
+          return [...messages, message];
+        })
+      ).subscribe(messages => this._messageThreadSource.next(messages));
+    });
   }
 
   stopHubConnection(): void {
-    this.hubConnection.stop();
+    if (this.hubConnection) {
+      this.hubConnection.stop();
+    }
   }
 
   getMessages(pageNumber: number, pageSize: number, container: string): Observable<PaginatedResult<Message[]>> {
@@ -55,13 +67,15 @@ export class MessageService {
     return this._http.get<Message[]>(this.baseUrl + '/thread/' + username);
   }
   
-  sendMessage(username: string, content: string): Observable<Message> {
+  async sendMessage(username: string, content: string): Promise<Message> {
     const messageType = {
       recipientUsername: username,
       content
     };
 
-    return this._http.post<Message>(this.baseUrl, messageType);
+    return await this.hubConnection
+      .invoke('SendMessage', messageType)
+      .catch(error => console.log(error));
   }
 
   deleteMessage(messageId: number): Observable<any> {
