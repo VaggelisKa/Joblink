@@ -55,6 +55,7 @@ export class MessagesComponent implements OnInit {
         this._messageService.deleteMessage(id).subscribe((_) => {
           const messageIndex = this.messages.findIndex(m => m.id === id);
           this.messages.splice(messageIndex, 1);
+          this.loadMessages();
     
           this._toastr.success('Message Deleted');
         });
