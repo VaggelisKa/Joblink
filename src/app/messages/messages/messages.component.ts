@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { Message } from 'src/app/models/message';
 import { Pagination } from 'src/app/models/pagination';
+import { ConfirmService } from 'src/app/shared/services/confirm.service';
 import { MessageService } from '../services/message.service';
 
 @Component({
@@ -17,7 +18,8 @@ export class MessagesComponent implements OnInit {
   pageSize = 5;
 
   constructor(private _messageService: MessageService,
-              private _toastr: ToastrService) { }
+              private _toastr: ToastrService,
+              private _confirmService: ConfirmService) { }
 
   ngOnInit() {
     this.loadMessages();
@@ -47,11 +49,16 @@ export class MessagesComponent implements OnInit {
   }
 
   deleteMessage(id: number): void {
-    this._messageService.deleteMessage(id).subscribe(res => {
-      const messageIndex = this.messages.findIndex(m => m.id === id);
-      this.messages.splice(messageIndex, 1);
-
-      this._toastr.success('Message Deleted');
+    this._confirmService.confirm('Delete Confirmation', 'Are you sure you want to delete?')
+    .subscribe(result => {
+      if (result) {
+        this._messageService.deleteMessage(id).subscribe((_) => {
+          const messageIndex = this.messages.findIndex(m => m.id === id);
+          this.messages.splice(messageIndex, 1);
+    
+          this._toastr.success('Message Deleted');
+        });
+      }
     });
   }
 }

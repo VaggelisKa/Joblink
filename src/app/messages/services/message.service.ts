@@ -5,6 +5,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { map, take } from 'rxjs/operators';
 import { Group } from 'src/app/models/group';
 import { User } from 'src/app/models/user';
+import { ConfirmService } from 'src/app/shared/services/confirm.service';
 import { environment } from 'src/environments/environment';
 import { Message } from '../../models/message';
 import { PaginatedResult } from '../../models/pagination';
@@ -23,7 +24,8 @@ export class MessageService {
 
   constructor(
     private _paginationService: PaginationService,
-    private _http: HttpClient) { }
+    private _http: HttpClient,
+    private _confirmService: ConfirmService) { }
 
   createHubConnection(user: User, receiverUsername: string): void {
     this.hubConnection = new HubConnectionBuilder()

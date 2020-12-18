@@ -10,6 +10,7 @@ import { Member } from 'src/app/models/member';
 import { User } from 'src/app/models/user';
 import { MembersService } from '../services/members.service';
 import { AllHtmlEntities } from 'html-entities';
+import { editorConfig } from './editor-config';
 
 @Component({
   selector: 'app-member-edit',
@@ -19,7 +20,7 @@ import { AllHtmlEntities } from 'html-entities';
 export class MemberEditComponent implements OnInit {
   member: Member;
   user: User;
-  editorConfig: AngularEditorConfig;
+  editorConfig: AngularEditorConfig = {};
 
   @ViewChild('editForm') editForm: NgForm;
   @HostListener('window:beforeunload', ['$event']) unloadNotification($event: any) {
@@ -38,43 +39,7 @@ export class MemberEditComponent implements OnInit {
     this._authService.currentUser$.pipe(take(1)).subscribe(user => this.user = user);
     this.loadMember();
 
-    this.editorConfig = {
-      editable: true,
-      spellcheck: true,
-      translate: 'yes',
-      height: 'auto',
-      minHeight: '0',
-      maxHeight: 'auto',
-      width: 'auto',
-      minWidth: '0',
-      enableToolbar: true,
-      showToolbar: true,
-      placeholder: 'Enter text here...',
-      defaultParagraphSeparator: '',
-      defaultFontName: '',
-      defaultFontSize: '',
-      fonts: [
-        {class: 'arial', name: 'Arial'},
-        {class: 'times-new-roman', name: 'Times New Roman'},
-        {class: 'calibri', name: 'Calibri'},
-        {class: 'comic-sans-ms', name: 'Comic Sans MS'}
-      ],
-      uploadWithCredentials: false,
-      sanitize: false,
-      toolbarPosition: 'top',
-      toolbarHiddenButtons: [
-        ['bold'],
-        [
-          'link',
-          'unlink',
-          'insertImage',
-          'insertVideo',
-          'customClasses',
-          'indent',
-          'outdent',
-        ]
-      ]
-    };
+    this.editorConfig = Object.assign(this.editorConfig, editorConfig);
   }
 
   loadMember(): void {
