@@ -1,7 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { AbstractControl, FormBuilder, FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, ValidatorFn, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ToastrService } from 'ngx-toastr';
 
 import { AuthService } from '../../auth.service';
 
@@ -56,7 +55,7 @@ export class RegisterComponent implements OnInit {
       return;
     }
 
-    this._authService.register(this.registerForm.value).subscribe(user => {
+    this._authService.register(this.registerForm.value).subscribe(() => {
       this._router.navigateByUrl('/member/edit');
     }, error => {
     this.validationErrors = error;

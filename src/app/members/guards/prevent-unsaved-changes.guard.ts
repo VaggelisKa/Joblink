@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { CanDeactivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree } from '@angular/router';
-import { Observable, Observer } from 'rxjs';
+import { CanDeactivate } from '@angular/router';
+import { Observable } from 'rxjs';
 import { ConfirmService } from 'src/app/shared/services/confirm.service';
 import { MemberEditComponent } from '../member-edit/member-edit.component';
 
