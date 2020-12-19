@@ -5,6 +5,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { map, take } from 'rxjs/operators';
 import { Group } from 'src/app/models/group';
 import { User } from 'src/app/models/user';
+import { BusyService } from 'src/app/shared/services/busy.service';
 import { ConfirmService } from 'src/app/shared/services/confirm.service';
 import { environment } from 'src/environments/environment';
 import { Message } from '../../models/message';
@@ -25,9 +26,11 @@ export class MessageService {
   constructor(
     private _paginationService: PaginationService,
     private _http: HttpClient,
-    private _confirmService: ConfirmService) { }
+    private _confirmService: ConfirmService,
+    private _busyService: BusyService) { }
 
   createHubConnection(user: User, receiverUsername: string): void {
+    this._busyService.busy();
     this.hubConnection = new HubConnectionBuilder()
       .withUrl(this.hubUrl + '?user=' + receiverUsername, {
         accessTokenFactory: () => user.token
@@ -37,7 +40,8 @@ export class MessageService {
 
     this.hubConnection
       .start()
-      .catch(error => console.log(error));
+      .catch(error => console.log(error))
+      .finally(() => this._busyService.idle());
 
     this.hubConnection.on('ReceiveMessageThread', messages => {
       this._messageThreadSource.next(messages);
@@ -71,6 +75,7 @@ export class MessageService {
 
   stopHubConnection(): void {
     if (this.hubConnection) {
+      this._messageThreadSource.next([]);
       this.hubConnection.stop();
     }
   }
